@@ -404,11 +404,186 @@ paths:
           description: Successful response
           content:
             application/json: {}
+    post:
+      tags:
+        - bus schedule
+      summary: store
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                route_id:
+                  type: integer
+                  example: '1'
+                bus_id:
+                  type: integer
+                  example: '38'
+                departure_date:
+                  type: string
+                  example: '2080-04-05'
+                departure_date_ad:
+                  type: string
+                  example: '2023-07-21'
+                departure_time:
+                  type: string
+                  example: '20:00'
+                status:
+                  type: string
+                  example: Active
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /bus-schedule-search:
+    get:
+      tags:
+        - bus schedule
+      summary: list search
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: departure_date
+          in: query
+          schema:
+            type: string
+          example: '2080-04-03'
+        - name: route_id
+          in: query
+          schema:
+            type: integer
+          example: '1'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
   /bus-schedule/{id}:
     get:
       tags:
         - bus schedule
       summary: single
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '120'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    post:
+      tags:
+        - bus schedule
+      summary: update
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                _method:
+                  type: string
+                  example: PUT
+                route_id:
+                  type: integer
+                  example: '1'
+                bus_id:
+                  type: integer
+                  example: '38'
+                departure_date:
+                  type: string
+                  example: '2080-04-03'
+                deparute_date_ad:
+                  type: string
+                  example: '2023-07-19'
+                departure_time:
+                  type: string
+                  example: '21:00'
+                status:
+                  type: string
+                  example: Inactive
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '119'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /bus-schedule/route/{route_id}/buses:
+    get:
+      tags:
+        - bus schedule
+      summary: get route buses
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: route_id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '1'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /bus-schedule/bus/{bus_id}/route:
+    get:
+      tags:
+        - bus schedule
+      summary: get bus route
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: bus_id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '38'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /bus-schedule/sub-route-discount/{id}:
+    post:
+      tags:
+        - bus schedule
+      summary: update sub route discount
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                _method:
+                  type: string
+                  example: PUT
+                is_discount_available:
+                  type: string
+                main_route_discount:
+                  type: string
+                sub_route_discount:
+                  type: string
       security:
         - bearerAuth: []
       parameters:

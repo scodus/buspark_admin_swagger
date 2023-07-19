@@ -18,7 +18,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "{{samiti_token}}",
+									"value": "{{access_token}}",
 									"type": "string"
 								}
 							]
@@ -45,7 +45,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "{{samiti_token}}",
+									"value": "{{access_token}}",
 									"type": "string"
 								}
 							]
@@ -97,7 +97,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "{{samiti_token}}",
+									"value": "{{access_token}}",
 									"type": "string"
 								}
 							]
@@ -149,7 +149,7 @@
 							"script": {
 								"exec": [
 									"const response = pm.response.json()\r",
-									"pm.environment.set('samiti_token', response.token)\r",
+									"pm.environment.set('access_token', response.token)\r",
 									"pm.environment.set('refresh_token', response.refresh_token)"
 								],
 								"type": "text/javascript"
@@ -164,13 +164,13 @@
 							"formdata": [
 								{
 									"key": "email",
-									"value": "augxdeveloper@gmail.com",
+									"value": "deepaksamiti@gmail.com",
 									"type": "text",
 									"disabled": true
 								},
 								{
 									"key": "password",
-									"value": "P@ssw0rd",
+									"value": "1234",
 									"type": "text",
 									"disabled": true
 								},
@@ -235,7 +235,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "{{samiti_token}}",
+									"value": "{{access_token}}",
 									"type": "string"
 								}
 							]
@@ -262,7 +262,7 @@
 							"script": {
 								"exec": [
 									"const response = pm.response.json()\r",
-									"pm.environment.set('samiti_token', response.data.access_token)\r",
+									"pm.environment.set('access_token', response.data.access_token)\r",
 									"pm.environment.set('refresh_token', response.data.refresh_token)"
 								],
 								"type": "text/javascript"
@@ -398,7 +398,14 @@
 					"name": "site-setting",
 					"request": {
 						"method": "GET",
-						"header": [],
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text",
+								"disabled": true
+							}
+						],
 						"url": {
 							"raw": "{{url}}/site-setting",
 							"host": [
@@ -424,7 +431,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "{{samiti_token}}",
+									"value": "{{access_token}}",
 									"type": "string"
 								}
 							]
@@ -451,7 +458,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "{{samiti_token}}",
+									"value": "{{access_token}}",
 									"type": "string"
 								}
 							]
@@ -490,7 +497,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "{{samiti_token}}",
+									"value": "{{access_token}}",
 									"type": "string"
 								}
 							]
@@ -524,7 +531,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "{{samiti_token}}",
+									"value": "{{access_token}}",
 									"type": "string"
 								}
 							]
@@ -564,7 +571,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "{{samiti_token}}",
+									"value": "{{access_token}}",
 									"type": "string"
 								}
 							]
@@ -591,7 +598,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "{{samiti_token}}",
+									"value": "{{access_token}}",
 									"type": "string"
 								}
 							]
@@ -625,7 +632,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "{{samiti_token}}",
+									"value": "{{access_token}}",
 									"type": "string"
 								}
 							]
@@ -665,7 +672,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "{{samiti_token}}",
+									"value": "{{access_token}}",
 									"type": "string"
 								}
 							]
@@ -692,7 +699,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "{{samiti_token}}",
+									"value": "{{access_token}}",
 									"type": "string"
 								}
 							]
@@ -731,7 +738,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "{{samiti_token}}",
+									"value": "{{access_token}}",
 									"type": "string"
 								}
 							]
@@ -751,6 +758,43 @@
 					"response": []
 				},
 				{
+					"name": "list search",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/bus-schedule-search?departure_date=2080-04-03&route_id=1",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"bus-schedule-search"
+							],
+							"query": [
+								{
+									"key": "departure_date",
+									"value": "2080-04-03"
+								},
+								{
+									"key": "route_id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
 					"name": "single",
 					"request": {
 						"auth": {
@@ -758,7 +802,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "{{samiti_token}}",
+									"value": "{{access_token}}",
 									"type": "string"
 								}
 							]
@@ -772,6 +816,338 @@
 							],
 							"path": [
 								"bus-schedule",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "120"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get route buses",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/bus-schedule/route/:route_id/buses",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"bus-schedule",
+								"route",
+								":route_id",
+								"buses"
+							],
+							"variable": [
+								{
+									"key": "route_id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get bus route",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/bus-schedule/bus/:bus_id/route",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"bus-schedule",
+								"bus",
+								":bus_id",
+								"route"
+							],
+							"variable": [
+								{
+									"key": "bus_id",
+									"value": "38"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "store",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "route_id",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "bus_id",
+									"value": "38",
+									"type": "text"
+								},
+								{
+									"key": "departure_date",
+									"value": "2080-04-05",
+									"type": "text"
+								},
+								{
+									"key": "departure_date_ad",
+									"value": "2023-07-21",
+									"type": "text"
+								},
+								{
+									"key": "departure_time",
+									"value": "20:00",
+									"type": "text"
+								},
+								{
+									"key": "status",
+									"value": "Active",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/bus-schedule",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"bus-schedule"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "_method",
+									"value": "PUT",
+									"type": "text"
+								},
+								{
+									"key": "route_id",
+									"value": "1",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "bus_id",
+									"value": "38",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "departure_date",
+									"value": "2080-04-03",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "deparute_date_ad",
+									"value": "2023-07-19",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "departure_time",
+									"value": "21:00",
+									"type": "text"
+								},
+								{
+									"key": "status",
+									"value": "Inactive",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/bus-schedule/:id",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"bus-schedule",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "119"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "store sub route discount",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "_method",
+									"value": "PUT",
+									"type": "text"
+								},
+								{
+									"key": "is_discount_available",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "main_route_discount",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "sub_route_discount",
+									"value": "",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/bus-schedule/sub-route-discount/:id",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"bus-schedule",
+								"sub-route-discount",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "119"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update sub route discount",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "_method",
+									"value": "PUT",
+									"type": "text"
+								},
+								{
+									"key": "is_discount_available",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "main_route_discount",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "sub_route_discount",
+									"value": "",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/bus-schedule/sub-route-discount/:id",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"bus-schedule",
+								"sub-route-discount",
 								":id"
 							],
 							"variable": [
