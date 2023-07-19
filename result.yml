@@ -30,6 +30,8 @@ tags:
   - name: user
   - name: site-setting
   - name: bus
+  - name: location
+  - name: route
   - name: bus schedule
 paths:
   /user-detail:
@@ -240,9 +242,32 @@ paths:
     get:
       tags:
         - bus
-      summary: bus list
+      summary: list
       security:
         - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /bus/list/paginated:
+    get:
+      tags:
+        - bus
+      summary: list paginated
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: limit
+          in: query
+          schema:
+            type: integer
+          example: '8'
+        - name: page
+          in: query
+          schema:
+            type: integer
+          example: '1'
       responses:
         '200':
           description: Successful response
@@ -252,7 +277,7 @@ paths:
     get:
       tags:
         - bus
-      summary: bus single
+      summary: single
       security:
         - bearerAuth: []
       parameters:
@@ -286,11 +311,92 @@ paths:
           description: Successful response
           content:
             application/json: {}
+  /location:
+    get:
+      tags:
+        - location
+      summary: list
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /location/{id}:
+    get:
+      tags:
+        - location
+      summary: single
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '12'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /location/by-slug/{slug}:
+    get:
+      tags:
+        - location
+      summary: single by slug
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: slug
+          in: path
+          schema:
+            type: string
+          required: true
+          example: finn-wiggins
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /route:
+    get:
+      tags:
+        - route
+      summary: list
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /route/{id}:
+    get:
+      tags:
+        - route
+      summary: single
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '1'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
   /bus-schedule:
     get:
       tags:
         - bus schedule
-      summary: bus schedule list
+      summary: list
       security:
         - bearerAuth: []
       responses:
@@ -302,7 +408,7 @@ paths:
     get:
       tags:
         - bus schedule
-      summary: bus schedule single
+      summary: single
       security:
         - bearerAuth: []
       parameters:
