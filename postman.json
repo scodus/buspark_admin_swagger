@@ -1041,6 +1041,473 @@
 					"response": []
 				},
 				{
+					"name": "status change",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "_method",
+									"value": "PUT",
+									"type": "text"
+								},
+								{
+									"key": "status",
+									"value": "Inactive",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/bus-schedule/:id/status-change",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"bus-schedule",
+								":id",
+								"status-change"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "120"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "booking status change",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "_method",
+									"value": "PUT",
+									"type": "text"
+								},
+								{
+									"key": "booking_status",
+									"value": "Open",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/bus-schedule/:id/booking-status-change",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"bus-schedule",
+								":id",
+								"booking-status-change"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "120"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "departure time change",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "_method",
+									"value": "PUT",
+									"type": "text"
+								},
+								{
+									"key": "departure_time",
+									"value": "21:00",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/bus-schedule/:id/departure-time-change",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"bus-schedule",
+								":id",
+								"departure-time-change"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "119"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "scheduled bus seats",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/bus-schedule/:id/bus-seats",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"bus-schedule",
+								":id",
+								"bus-seats"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "120"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "scheduled bus seats enable disable",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "seat_id[]",
+									"value": "53",
+									"type": "text"
+								},
+								{
+									"key": "seat_id[]",
+									"value": "41",
+									"type": "text"
+								},
+								{
+									"key": "seat_id[]",
+									"value": "54",
+									"type": "text"
+								},
+								{
+									"key": "seat_id[]",
+									"value": "50",
+									"type": "text"
+								},
+								{
+									"key": "seat_id[]",
+									"value": "46",
+									"type": "text"
+								},
+								{
+									"key": "seat_id[]",
+									"value": "55",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/bus-schedule/:id/bus-seats/enable-disable",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"bus-schedule",
+								":id",
+								"bus-seats",
+								"enable-disable"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "120"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "scheduled bus seats enabled Availability",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "seat_id[]",
+									"value": "53",
+									"type": "text"
+								},
+								{
+									"key": "seat_id[]",
+									"value": "41",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "available_to",
+									"value": "Online",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/bus-schedule/:id/bus-seats/available-to",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"bus-schedule",
+								":id",
+								"bus-seats",
+								"available-to"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "120"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "scheduled bus seats Get Counters",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/bus-schedule/:id/counters",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"bus-schedule",
+								":id",
+								"counters"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "120"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "scheduled bus seats Counter Assign",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "seat_id[]",
+									"value": "54",
+									"type": "text"
+								},
+								{
+									"key": "seat_id[]",
+									"value": "55",
+									"type": "text"
+								},
+								{
+									"key": "counter_availability",
+									"value": "21",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/bus-schedule/:id/bus-seats/counter-assign",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"bus-schedule",
+								":id",
+								"bus-seats",
+								"counter-assign"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "120"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "route bus facility type price",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "_method",
+									"value": "PUT",
+									"type": "text"
+								},
+								{
+									"key": "is_discount_available",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "main_route_discount",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "sub_route_discount",
+									"value": "",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/bus-schedule/:id/route-bus-facility-type-price",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"bus-schedule",
+								":id",
+								"route-bus-facility-type-price"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "119"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
 					"name": "store sub route discount",
 					"request": {
 						"auth": {

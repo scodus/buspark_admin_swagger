@@ -1,7 +1,7 @@
 openapi: 3.0.0
 info:
-  title: Bus Reservation
-  description: Bus Reservation
+  title: 'Buspark Admin Api-v2 '
+  description: 'Buspark Admin Api-v2 '
   version: '1.0'
   x-logo:
     url: https://github.com/joolfe/logoBanner.png
@@ -559,6 +559,246 @@ paths:
             type: integer
           required: true
           example: '38'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /bus-schedule/{id}/status-change:
+    post:
+      tags:
+        - bus schedule
+      summary: status change
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                _method:
+                  type: string
+                  example: PUT
+                status:
+                  type: string
+                  example: Inactive
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '120'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /bus-schedule/{id}/booking-status-change:
+    post:
+      tags:
+        - bus schedule
+      summary: booking status change
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                _method:
+                  type: string
+                  example: PUT
+                booking_status:
+                  type: string
+                  example: Open
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '120'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /bus-schedule/{id}/departure-time-change:
+    post:
+      tags:
+        - bus schedule
+      summary: departure time change
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                _method:
+                  type: string
+                  example: PUT
+                departure_time:
+                  type: string
+                  example: '21:00'
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '119'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /bus-schedule/{id}/bus-seats:
+    get:
+      tags:
+        - bus schedule
+      summary: scheduled bus seats
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '120'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /bus-schedule/{id}/bus-seats/enable-disable:
+    post:
+      tags:
+        - bus schedule
+      summary: scheduled bus seats enable disable
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                seat_id[]:
+                  type: integer
+                  example: '55'
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '120'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /bus-schedule/{id}/bus-seats/available-to:
+    post:
+      tags:
+        - bus schedule
+      summary: scheduled bus seats enabled Availability
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                seat_id[]:
+                  type: integer
+                  example: '41'
+                available_to:
+                  type: string
+                  example: Online
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '120'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /bus-schedule/{id}/counters:
+    get:
+      tags:
+        - bus schedule
+      summary: scheduled bus seats Get Counters
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '120'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /bus-schedule/{id}/bus-seats/counter-assign:
+    post:
+      tags:
+        - bus schedule
+      summary: scheduled bus seats Counter Assign
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                seat_id[]:
+                  type: integer
+                  example: '55'
+                counter_availability:
+                  type: integer
+                  example: '21'
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '120'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /bus-schedule/{id}/route-bus-facility-type-price:
+    get:
+      tags:
+        - bus schedule
+      summary: route bus facility type price
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '119'
       responses:
         '200':
           description: Successful response
