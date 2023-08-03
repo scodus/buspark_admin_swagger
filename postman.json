@@ -187,7 +187,7 @@
 								},
 								{
 									"key": "email",
-									"value": "samiti1@samiti.com",
+									"value": "samiti2@samiti.com",
 									"type": "text",
 									"disabled": true
 								},
@@ -201,6 +201,12 @@
 									"key": "email",
 									"value": "bikashxaus@gmail.com",
 									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "admin@admin.com",
+									"type": "text",
+									"disabled": true
 								}
 							]
 						},
@@ -731,6 +737,113 @@
 			"name": "bus schedule",
 			"item": [
 				{
+					"name": "for booking",
+					"item": [
+						{
+							"name": "search list",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{access_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text",
+										"disabled": true
+									}
+								],
+								"url": {
+									"raw": "{{url}}/bus-schedule/search/for-booking?from=1&to=2&date=2080-04-20",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"bus-schedule",
+										"search",
+										"for-booking"
+									],
+									"query": [
+										{
+											"key": "from",
+											"value": "1"
+										},
+										{
+											"key": "to",
+											"value": "2"
+										},
+										{
+											"key": "shift",
+											"value": "night",
+											"disabled": true
+										},
+										{
+											"key": "date",
+											"value": "2080-04-20"
+										},
+										{
+											"key": "to",
+											"value": "9",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "single (get bus seat)",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{access_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": []
+								},
+								"url": {
+									"raw": "{{url}}/bus-schedule/:bus_schedule_id/for-booking",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"bus-schedule",
+										":bus_schedule_id",
+										"for-booking"
+									],
+									"variable": [
+										{
+											"key": "bus_schedule_id",
+											"value": "125"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
 					"name": "list",
 					"request": {
 						"auth": {
@@ -773,12 +886,12 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{url}}/bus-schedule-search?departure_date=2080-04-03&route_id=1",
+							"raw": "{{url}}/bus-schedule-search-by-dates?departure_date=2080-04-03&route_id=1",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
-								"bus-schedule-search"
+								"bus-schedule-search-by-dates"
 							],
 							"query": [
 								{
@@ -1065,7 +1178,7 @@
 								},
 								{
 									"key": "status",
-									"value": "Inactive",
+									"value": "Active",
 									"type": "text"
 								}
 							]
@@ -1183,7 +1296,7 @@
 							"variable": [
 								{
 									"key": "id",
-									"value": "119"
+									"value": "120"
 								}
 							]
 						}
@@ -1445,7 +1558,7 @@
 					"response": []
 				},
 				{
-					"name": "route bus facility type price",
+					"name": "bus schedule route bus facility type price",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
@@ -1621,6 +1734,856 @@
 								{
 									"key": "id",
 									"value": "117"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "list by departure dates",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{url}}/bus-schedule-search-by-dates?from_date=2080-04-31&to_date=2080-04-32",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"bus-schedule-search-by-dates"
+							],
+							"query": [
+								{
+									"key": "from_date",
+									"value": "2080-04-31"
+								},
+								{
+									"key": "to_date",
+									"value": "2080-04-32"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "bus booking",
+			"item": [
+				{
+					"name": "pre booking",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/bus-booking/pre-booking?from=1&to=9&schedule_id=125&date=2080-04-20&seat_id[]=53",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"bus-booking",
+								"pre-booking"
+							],
+							"query": [
+								{
+									"key": "from",
+									"value": "1"
+								},
+								{
+									"key": "to",
+									"value": "9"
+								},
+								{
+									"key": "schedule_id",
+									"value": "125"
+								},
+								{
+									"key": "date",
+									"value": "2080-04-20"
+								},
+								{
+									"key": "seat_id[]",
+									"value": "53"
+								},
+								{
+									"key": "seat_id[]",
+									"value": "54",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "pre booking timeout",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "schedule_id",
+									"value": "117",
+									"type": "text"
+								},
+								{
+									"key": "seat_id[]",
+									"value": "50",
+									"type": "text"
+								},
+								{
+									"key": "seat_id[]",
+									"value": "55",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/bus-booking/pre-booking-timeout",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"bus-booking",
+								"pre-booking-timeout"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "store booking",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"schedule_id\": 117,\n    \"route_id\": 1,\n    \"drop_location\": \"X-place\",\n    \"rate\": 12,\n    // \"qty\": 2,\n    \"discount\": \"1\",\n    // \"t_price\": 30,\n    // \"total\": 30,\n    \"paid\": 15,\n    // \"due\": \"\",\n    // \"return\": \"\",\n    \"contact_phone\": \"98xxxxxxxx\",\n    \"contact_name\": \"X-man Mu\",\n    // \"bus_details\": \"\",\n    \"seat_id\": [\n        \"50\"\n        ,\n        \"55\"\n    ],\n    // \"payment_status\": \"pending\",\n    // \"status\": \"OnBooking\",\n    \"sub_route_price\":\n    // \"\"\n    // [\n        {\n            \"from_id\": 1,\n            \"to_id\": 9,\n            \"sub_route_from\": \"KTM\",\n            \"sub_route_to\": \"Kohalpur\",\n            \"price\": \"12\",\n            \"discount\": \"2\"\n        }\n    // ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/bus-booking/store",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"bus-booking",
+								"store"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "cancel booking",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/bus-booking/:id/cancel",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"bus-booking",
+								":id",
+								"cancel"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "626"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Users/my booking users from role",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{url}}/bus-booking/users-my-booking/users-from-role?role_id=3",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"bus-booking",
+								"users-my-booking",
+								"users-from-role"
+							],
+							"query": [
+								{
+									"key": "role_id",
+									"value": "3"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Users/my booking - users",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{url}}/bus-booking/users-my-booking/users",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"bus-booking",
+								"users-my-booking",
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Users/my booking history",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{url}}/bus-booking/users-my-booking?from_date=2080-04-31&to_date=2080-04-32",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"bus-booking",
+								"users-my-booking"
+							],
+							"query": [
+								{
+									"key": "from_date",
+									"value": "2080-04-31",
+									"description": "Departure Date From"
+								},
+								{
+									"key": "to_date",
+									"value": "2080-04-32",
+									"description": "Departure Date To"
+								},
+								{
+									"key": "user_id",
+									"value": "80",
+									"disabled": true
+								},
+								{
+									"key": "role_id",
+									"value": "3",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "list by bus-schedule",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{url}}/bus-booking-search?bus_schedule_id=117",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"bus-booking-search"
+							],
+							"query": [
+								{
+									"key": "from_date",
+									"value": "2080-04-31",
+									"disabled": true
+								},
+								{
+									"key": "to_date",
+									"value": "2080-04-32",
+									"disabled": true
+								},
+								{
+									"key": "bus_schedule_id",
+									"value": "117"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "list Cancelled by bus-schedule",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{url}}/bus-booking-cancelled-search?bus_schedule_id=117",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"bus-booking-cancelled-search"
+							],
+							"query": [
+								{
+									"key": "from_date",
+									"value": "2080-04-31",
+									"disabled": true
+								},
+								{
+									"key": "to_date",
+									"value": "2080-04-32",
+									"disabled": true
+								},
+								{
+									"key": "bus_schedule_id",
+									"value": "117"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "single",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{url}}/bus-booking/:id",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"bus-booking",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "620"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "seat cancel",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "new_booked_seat_id[]",
+									"value": "50",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "new_booked_seat_id[]",
+									"value": "55",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/bus-booking/:id/seat-cancel",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"bus-booking",
+								":id",
+								"seat-cancel"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "632"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "role",
+			"item": [
+				{
+					"name": "list",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/role",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"role"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "single",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/role/:id",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"role",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "3"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "role - users",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/role/:id/users",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"role",
+								":id",
+								"users"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "3"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "departure list",
+			"item": [
+				{
+					"name": "list",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/departure-list-search?departure_date=2080-04-32",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"departure-list-search"
+							],
+							"query": [
+								{
+									"key": "departure_date",
+									"value": "2080-04-32"
+								},
+								{
+									"key": "association_id",
+									"value": "",
+									"disabled": true
+								},
+								{
+									"key": "company_id",
+									"value": "",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "chalani",
+			"item": [
+				{
+					"name": "list",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/chalani-list-search?departure_date=2080-04-32&bus_id=38",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"chalani-list-search"
+							],
+							"query": [
+								{
+									"key": "departure_date",
+									"value": "2080-04-32"
+								},
+								{
+									"key": "bus_id",
+									"value": "38"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "sales report",
+			"item": [
+				{
+					"name": "list counter online",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/sales-report-list-counter-online?from_date=2080-04-17&to_date=2080-04-17&from_date_ad=2023-08-02&to_date_ad=2023-08-02",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"sales-report-list-counter-online"
+							],
+							"query": [
+								{
+									"key": "from_date",
+									"value": "2080-04-17"
+								},
+								{
+									"key": "to_date",
+									"value": "2080-04-17"
+								},
+								{
+									"key": "from_date_ad",
+									"value": "2023-08-02"
+								},
+								{
+									"key": "to_date_ad",
+									"value": "2023-08-02"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "list all user",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/sales-report-list-all-user?from_date=2080-04-17&to_date=2080-04-17&from_date_ad=2023-08-02&to_date_ad=2023-08-02",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"sales-report-list-all-user"
+							],
+							"query": [
+								{
+									"key": "from_date",
+									"value": "2080-04-17"
+								},
+								{
+									"key": "to_date",
+									"value": "2080-04-17"
+								},
+								{
+									"key": "from_date_ad",
+									"value": "2023-08-02"
+								},
+								{
+									"key": "to_date_ad",
+									"value": "2023-08-02"
 								}
 							]
 						}

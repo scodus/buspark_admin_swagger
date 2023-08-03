@@ -12,4 +12,4 @@
 
 #### Reference `https://joolfe.github.io/postman-to-openapi/`
 # buspark-samiti-swagger
-Buspark Admin Swagger
+Buspark Admin Swagger (Api v2)
