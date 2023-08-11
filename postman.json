@@ -183,24 +183,24 @@
 								{
 									"key": "password",
 									"value": "P@ssw0rd",
-									"type": "text"
+									"type": "text",
+									"disabled": true
 								},
 								{
 									"key": "email",
 									"value": "samiti2@samiti.com",
-									"type": "text",
-									"disabled": true
+									"type": "text"
 								},
 								{
 									"key": "password",
 									"value": "1234",
-									"type": "text",
-									"disabled": true
+									"type": "text"
 								},
 								{
 									"key": "email",
 									"value": "bikashxaus@gmail.com",
-									"type": "text"
+									"type": "text",
+									"disabled": true
 								},
 								{
 									"key": "email",
@@ -1354,39 +1354,13 @@
 						"method": "POST",
 						"header": [],
 						"body": {
-							"mode": "formdata",
-							"formdata": [
-								{
-									"key": "seat_id[]",
-									"value": "53",
-									"type": "text"
-								},
-								{
-									"key": "seat_id[]",
-									"value": "41",
-									"type": "text"
-								},
-								{
-									"key": "seat_id[]",
-									"value": "54",
-									"type": "text"
-								},
-								{
-									"key": "seat_id[]",
-									"value": "50",
-									"type": "text"
-								},
-								{
-									"key": "seat_id[]",
-									"value": "46",
-									"type": "text"
-								},
-								{
-									"key": "seat_id[]",
-									"value": "55",
-									"type": "text"
+							"mode": "raw",
+							"raw": "{\r\n    \"seat_id\": [\r\n        \"53\",\r\n        \"41\",\r\n        \"54\",\r\n        \"50\",\r\n        \"46\",\r\n        \"55\"\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
 								}
-							]
+							}
 						},
 						"url": {
 							"raw": "{{url}}/bus-schedule/:id/bus-seats/enable-disable",
@@ -1425,25 +1399,13 @@
 						"method": "POST",
 						"header": [],
 						"body": {
-							"mode": "formdata",
-							"formdata": [
-								{
-									"key": "seat_id[]",
-									"value": "53",
-									"type": "text"
-								},
-								{
-									"key": "seat_id[]",
-									"value": "41",
-									"type": "text",
-									"disabled": true
-								},
-								{
-									"key": "available_to",
-									"value": "Online",
-									"type": "text"
+							"mode": "raw",
+							"raw": "{\r\n    \"seat_id\": [\r\n        \"53\",\r\n        \"41\",\r\n        \"54\"\r\n        // ,\r\n        // \"50\",\r\n        // \"46\",\r\n        // \"55\"\r\n    ],\r\n    \"available_to\": \"Online\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
 								}
-							]
+							}
 						},
 						"url": {
 							"raw": "{{url}}/bus-schedule/:id/bus-seats/available-to",
@@ -1517,24 +1479,13 @@
 						"method": "POST",
 						"header": [],
 						"body": {
-							"mode": "formdata",
-							"formdata": [
-								{
-									"key": "seat_id[]",
-									"value": "54",
-									"type": "text"
-								},
-								{
-									"key": "seat_id[]",
-									"value": "55",
-									"type": "text"
-								},
-								{
-									"key": "counter_availability",
-									"value": "21",
-									"type": "text"
+							"mode": "raw",
+							"raw": "{\r\n    \"seat_id\": [\r\n        // \"53\",\r\n        // \"41\",\r\n        // \"54\",\r\n        // \"50\",\r\n        // \"46\",\r\n        \"55\"\r\n    ],\r\n    \"counter_availability\": 21\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
 								}
-							]
+							}
 						},
 						"url": {
 							"raw": "{{url}}/bus-schedule/:id/bus-seats/counter-assign",
