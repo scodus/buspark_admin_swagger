@@ -16,7 +16,7 @@ info:
     name: MIT
     url: https://es.wikipedia.org/wiki/Licencia_MIT
 servers:
-  - url: https://buspark.scodus.com/api/v2
+  - url: http://buspark.scodus.com/api/v2
     description: Base URL
 components:
   securitySchemes:
