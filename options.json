@@ -21,7 +21,7 @@
   },
   "servers": [
     {
-      "url": "http://buspark.scodus.com/api/v2",
+      "url": "https://buspark.scodus.com/api/v2",
       "description": "Base URL"
     }
   ]
