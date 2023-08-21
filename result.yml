@@ -420,7 +420,7 @@ paths:
           in: query
           schema:
             type: string
-          example: '2080-04-20'
+          example: '2080-05-31'
       responses:
         '200':
           description: Successful response
@@ -439,7 +439,7 @@ paths:
           schema:
             type: integer
           required: true
-          example: '125'
+          example: '127'
       responses:
         '200':
           description: Successful response
@@ -528,7 +528,7 @@ paths:
           schema:
             type: integer
           required: true
-          example: '120'
+          example: '127'
       responses:
         '200':
           description: Successful response
@@ -540,31 +540,26 @@ paths:
       summary: update
       requestBody:
         content:
-          multipart/form-data:
+          application/json:
             schema:
               type: object
-              properties:
-                _method:
-                  type: string
-                  example: PUT
-                route_id:
-                  type: integer
-                  example: '1'
-                bus_id:
-                  type: integer
-                  example: '38'
-                departure_date:
-                  type: string
-                  example: '2080-04-03'
-                deparute_date_ad:
-                  type: string
-                  example: '2023-07-19'
-                departure_time:
-                  type: string
-                  example: '21:00'
-                status:
-                  type: string
-                  example: Inactive
+              example:
+                _method: PUT
+                departure_time: '21:00'
+                status: Active
+                is_discount_available: 1
+                main_route_discount: 3
+                sub_route_discount:
+                  - from_id: '1'
+                    to_id: '9'
+                    price: '12'
+                    discount: '2'
+                    status: Active
+                  - from_id: '8'
+                    to_id: '9'
+                    price: '10'
+                    discount: null
+                    status: Active
       security:
         - bearerAuth: []
       parameters:
@@ -573,7 +568,7 @@ paths:
           schema:
             type: integer
           required: true
-          example: '119'
+          example: '127'
       responses:
         '200':
           description: Successful response
@@ -842,7 +837,7 @@ paths:
     get:
       tags:
         - bus schedule
-      summary: bus schedule route bus facility type price
+      summary: bus schedule->route bus facility type price
       security:
         - bearerAuth: []
       parameters:
@@ -851,7 +846,7 @@ paths:
           schema:
             type: integer
           required: true
-          example: '119'
+          example: '127'
       responses:
         '200':
           description: Successful response
@@ -861,22 +856,27 @@ paths:
     post:
       tags:
         - bus schedule
-      summary: update sub route discount
+      summary: store sub route discount
       requestBody:
         content:
-          multipart/form-data:
+          application/json:
             schema:
               type: object
-              properties:
-                _method:
-                  type: string
-                  example: PUT
-                is_discount_available:
-                  type: string
-                main_route_discount:
-                  type: string
+              example:
+                _method: PUT
+                is_discount_available: 1
+                main_route_discount: 3
                 sub_route_discount:
-                  type: string
+                  - from_id: '1'
+                    to_id: '9'
+                    price: '12'
+                    discount: '2'
+                    status: Active
+                  - from_id: '8'
+                    to_id: '9'
+                    price: '10'
+                    discount: '4'
+                    status: Active
       security:
         - bearerAuth: []
       parameters:
@@ -885,7 +885,7 @@ paths:
           schema:
             type: integer
           required: true
-          example: '117'
+          example: '127'
       responses:
         '200':
           description: Successful response
@@ -913,12 +913,12 @@ paths:
           in: query
           schema:
             type: integer
-          example: '120'
+          example: '127'
         - name: date
           in: query
           schema:
             type: string
-          example: '2080-04-04'
+          example: '2080-05-31'
         - name: seat_id[]
           in: query
           schema:
@@ -963,7 +963,7 @@ paths:
             schema:
               type: object
               example:
-                schedule_id: 117
+                schedule_id: 127
                 route_id: 1
                 drop_location: X-place
                 rate: 12
@@ -972,8 +972,7 @@ paths:
                 contact_phone: 98xxxxxxxx
                 contact_name: X-man Mu
                 seat_id:
-                  - '50'
-                  - '55'
+                  - '53'
                 sub_route_price:
                   from_id: 1
                   to_id: 9

@@ -4,7 +4,7 @@
 		"name": "buspark v2/samiti apis",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "15009917",
-		"_collection_link": "https://lunar-robot-597788.postman.co/workspace/Bikash's-Workspace~07b4d747-08b6-4eac-9f94-41a4bad205fa/collection/15009917-556f60cf-eece-469e-a4c8-07f4652f7a92?action=share&creator=15009917&source=collection_link"
+		"_collection_link": "https://lunar-robot-597788.postman.co/workspace/Bikash's-Workspace~07b4d747-08b6-4eac-9f94-41a4bad205fa/collection/15009917-556f60cf-eece-469e-a4c8-07f4652f7a92?action=share&source=collection_link&creator=15009917"
 	},
 	"item": [
 		{
@@ -165,8 +165,7 @@
 								{
 									"key": "email",
 									"value": "deepaksamiti@gmail.com",
-									"type": "text",
-									"disabled": true
+									"type": "text"
 								},
 								{
 									"key": "password",
@@ -183,24 +182,24 @@
 								{
 									"key": "password",
 									"value": "P@ssw0rd",
-									"type": "text",
-									"disabled": true
+									"type": "text"
 								},
 								{
 									"key": "email",
 									"value": "samiti2@samiti.com",
-									"type": "text"
+									"type": "text",
+									"disabled": true
 								},
 								{
 									"key": "password",
 									"value": "1234",
-									"type": "text"
+									"type": "text",
+									"disabled": true
 								},
 								{
 									"key": "email",
 									"value": "bikashxaus@gmail.com",
-									"type": "text",
-									"disabled": true
+									"type": "text"
 								},
 								{
 									"key": "email",
@@ -762,7 +761,7 @@
 									}
 								],
 								"url": {
-									"raw": "{{url}}/bus-schedule/search/for-booking?from=1&to=2&date=2080-04-20",
+									"raw": "{{url}}/bus-schedule/search/for-booking?from=1&to=2&date=2080-05-31",
 									"host": [
 										"{{url}}"
 									],
@@ -787,7 +786,7 @@
 										},
 										{
 											"key": "date",
-											"value": "2080-04-20"
+											"value": "2080-05-31"
 										},
 										{
 											"key": "to",
@@ -834,7 +833,7 @@
 									"variable": [
 										{
 											"key": "bus_schedule_id",
-											"value": "125"
+											"value": "127"
 										}
 									]
 								}
@@ -934,7 +933,7 @@
 							"variable": [
 								{
 									"key": "id",
-									"value": "120"
+									"value": "127"
 								}
 							]
 						}
@@ -1091,48 +1090,13 @@
 						"method": "POST",
 						"header": [],
 						"body": {
-							"mode": "formdata",
-							"formdata": [
-								{
-									"key": "_method",
-									"value": "PUT",
-									"type": "text"
-								},
-								{
-									"key": "route_id",
-									"value": "1",
-									"type": "text",
-									"disabled": true
-								},
-								{
-									"key": "bus_id",
-									"value": "38",
-									"type": "text",
-									"disabled": true
-								},
-								{
-									"key": "departure_date",
-									"value": "2080-04-03",
-									"type": "text",
-									"disabled": true
-								},
-								{
-									"key": "deparute_date_ad",
-									"value": "2023-07-19",
-									"type": "text",
-									"disabled": true
-								},
-								{
-									"key": "departure_time",
-									"value": "21:00",
-									"type": "text"
-								},
-								{
-									"key": "status",
-									"value": "Inactive",
-									"type": "text"
+							"mode": "raw",
+							"raw": "{\r\n    \"_method\": \"PUT\",\r\n    //route_id:1\r\n    //bus_id:38\r\n    //departure_date:2080-04-03\r\n    //deparute_date_ad:2023-07-19\r\n    \"departure_time\": \"21:00\",\r\n    \"status\": \"Active\",\r\n    \"is_discount_available\": 1,\r\n    \"main_route_discount\": 3,\r\n    \"sub_route_discount\": [\r\n        {\r\n            \"from_id\": \"1\", //can't change\r\n            \"to_id\": \"9\", //can't change\r\n            \"price\": \"12\", //can't change\r\n            \"discount\": \"2\",\r\n            \"status\": \"Active\" //can't change\r\n        },\r\n        {\r\n            \"from_id\": \"8\", //can't change\r\n            \"to_id\": \"9\", //can't change\r\n            \"price\": \"10\", //can't change\r\n            \"discount\": null,\r\n            \"status\": \"Active\" //can't change\r\n        }\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
 								}
-							]
+							}
 						},
 						"url": {
 							"raw": "{{url}}/bus-schedule/:id",
@@ -1146,7 +1110,7 @@
 							"variable": [
 								{
 									"key": "id",
-									"value": "119"
+									"value": "127"
 								}
 							]
 						}
@@ -1509,7 +1473,7 @@
 					"response": []
 				},
 				{
-					"name": "bus schedule route bus facility type price",
+					"name": "bus schedule->route bus facility type price",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
@@ -1564,7 +1528,7 @@
 							"variable": [
 								{
 									"key": "id",
-									"value": "119"
+									"value": "127"
 								}
 							]
 						}
@@ -1587,29 +1551,13 @@
 						"method": "POST",
 						"header": [],
 						"body": {
-							"mode": "formdata",
-							"formdata": [
-								{
-									"key": "_method",
-									"value": "PUT",
-									"type": "text"
-								},
-								{
-									"key": "is_discount_available",
-									"value": "",
-									"type": "text"
-								},
-								{
-									"key": "main_route_discount",
-									"value": "",
-									"type": "text"
-								},
-								{
-									"key": "sub_route_discount",
-									"value": "",
-									"type": "text"
+							"mode": "raw",
+							"raw": "{\r\n    \"_method\": \"PUT\",\r\n    \"is_discount_available\": 1,\r\n    \"main_route_discount\": 3,\r\n    \"sub_route_discount\": [\r\n        {\r\n            \"from_id\": \"1\", //can't change\r\n            \"to_id\": \"9\", //can't change\r\n            \"price\": \"12\", //can't change\r\n            \"discount\": \"2\",\r\n            \"status\": \"Active\" //can't change\r\n        },\r\n        {\r\n            \"from_id\": \"8\", //can't change\r\n            \"to_id\": \"9\", //can't change\r\n            \"price\": \"10\", //can't change\r\n            \"discount\": \"4\",\r\n            \"status\": \"Active\" //can't change\r\n        }\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
 								}
-							]
+							}
 						},
 						"url": {
 							"raw": "{{url}}/bus-schedule/sub-route-discount/:id",
@@ -1624,67 +1572,7 @@
 							"variable": [
 								{
 									"key": "id",
-									"value": "119"
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "update sub route discount",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{access_token}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "formdata",
-							"formdata": [
-								{
-									"key": "_method",
-									"value": "PUT",
-									"type": "text"
-								},
-								{
-									"key": "is_discount_available",
-									"value": "",
-									"type": "text"
-								},
-								{
-									"key": "main_route_discount",
-									"value": "",
-									"type": "text"
-								},
-								{
-									"key": "sub_route_discount",
-									"value": "",
-									"type": "text"
-								}
-							]
-						},
-						"url": {
-							"raw": "{{url}}/bus-schedule/sub-route-discount/:id",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"bus-schedule",
-								"sub-route-discount",
-								":id"
-							],
-							"variable": [
-								{
-									"key": "id",
-									"value": "117"
+									"value": "127"
 								}
 							]
 						}
@@ -1768,7 +1656,7 @@
 							}
 						},
 						"url": {
-							"raw": "{{url}}/bus-booking/pre-booking?from=1&to=2&schedule_id=120&date=2080-04-04&seat_id[]=53&seat_id[]=54",
+							"raw": "{{url}}/bus-booking/pre-booking?from=1&to=2&schedule_id=127&date=2080-05-31&seat_id[]=53",
 							"host": [
 								"{{url}}"
 							],
@@ -1787,11 +1675,11 @@
 								},
 								{
 									"key": "schedule_id",
-									"value": "120"
+									"value": "127"
 								},
 								{
 									"key": "date",
-									"value": "2080-04-04"
+									"value": "2080-05-31"
 								},
 								{
 									"key": "seat_id[]",
@@ -1800,7 +1688,8 @@
 								},
 								{
 									"key": "seat_id[]",
-									"value": "54"
+									"value": "54",
+									"disabled": true
 								}
 							]
 						}
@@ -1861,7 +1750,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"schedule_id\": 117,\n    \"route_id\": 1,\n    \"drop_location\": \"X-place\",\n    \"rate\": 12,\n    // \"qty\": 2,\n    \"discount\": \"1\",\n    // \"t_price\": 30,\n    // \"total\": 30,\n    \"paid\": 15,\n    // \"due\": \"\",\n    // \"return\": \"\",\n    \"contact_phone\": \"98xxxxxxxx\",\n    \"contact_name\": \"X-man Mu\",\n    // \"bus_details\": \"\",\n    \"seat_id\": [\n        \"50\"\n        ,\n        \"55\"\n    ],\n    // \"payment_status\": \"pending\",\n    // \"status\": \"OnBooking\",\n    \"sub_route_price\":\n    // \"\"\n    // [\n        {\n            \"from_id\": 1,\n            \"to_id\": 9,\n            \"sub_route_from\": \"KTM\",\n            \"sub_route_to\": \"Kohalpur\",\n            \"price\": \"12\",\n            \"discount\": \"2\"\n        }\n    // ]\n}",
+							"raw": "{\n    \"schedule_id\": 127,\n    \"route_id\": 1,\n    \"drop_location\": \"X-place\",\n    \"rate\": 12,\n    // \"qty\": 2,\n    \"discount\": \"1\",\n    // \"t_price\": 30,\n    // \"total\": 30,\n    \"paid\": 15,\n    // \"due\": \"\",\n    // \"return\": \"\",\n    \"contact_phone\": \"98xxxxxxxx\",\n    \"contact_name\": \"X-man Mu\",\n    // \"bus_details\": \"\",\n    \"seat_id\": [\n        \"53\"\n        // ,\n        // \"55\"\n    ],\n    // \"payment_status\": \"pending\",\n    // \"status\": \"OnBooking\",\n    \"sub_route_price\":\n    // \"\"\n    // [\n        {\n            \"from_id\": 1,\n            \"to_id\": 9,\n            \"sub_route_from\": \"KTM\",\n            \"sub_route_to\": \"Kohalpur\",\n            \"price\": \"12\",\n            \"discount\": \"2\"\n        }\n    // ]\n}",
 							"options": {
 								"raw": {
 									"language": "json"
