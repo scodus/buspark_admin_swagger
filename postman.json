@@ -2412,6 +2412,138 @@
 					"response": []
 				}
 			]
+		},
+		{
+			"name": "association",
+			"item": [
+				{
+					"name": "list",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/association",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"association"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "single",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/association/:slug",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"association",
+								":slug"
+							],
+							"variable": [
+								{
+									"key": "slug",
+									"value": "madonna-savage"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "company",
+			"item": [
+				{
+					"name": "list",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/company",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"company"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "single",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/company/:slug",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"company",
+								":slug"
+							],
+							"variable": [
+								{
+									"key": "slug",
+									"value": "hamilton-and-rowland-co"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
 		}
 	]
 }

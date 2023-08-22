@@ -39,6 +39,8 @@ tags:
   - name: departure list
   - name: chalani
   - name: sales report
+  - name: association
+  - name: company
 paths:
   /user-detail:
     get:
@@ -1298,6 +1300,68 @@ paths:
           schema:
             type: string
           example: '2023-08-02'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /association:
+    get:
+      tags:
+        - association
+      summary: list
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /association/{slug}:
+    get:
+      tags:
+        - association
+      summary: single
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: slug
+          in: path
+          schema:
+            type: string
+          required: true
+          example: madonna-savage
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /company:
+    get:
+      tags:
+        - company
+      summary: list
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /company/{slug}:
+    get:
+      tags:
+        - company
+      summary: single
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: slug
+          in: path
+          schema:
+            type: string
+          required: true
+          example: hamilton-and-rowland-co
       responses:
         '200':
           description: Successful response
