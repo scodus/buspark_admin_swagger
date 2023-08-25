@@ -41,6 +41,7 @@ tags:
   - name: sales report
   - name: association
   - name: company
+  - name: contact-us
 paths:
   /user-detail:
     get:
@@ -417,7 +418,7 @@ paths:
           in: query
           schema:
             type: integer
-          example: '2'
+          example: '9'
         - name: date
           in: query
           schema:
@@ -1385,6 +1386,37 @@ paths:
             type: string
           required: true
           example: hamilton-and-rowland-co
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /contact-us:
+    post:
+      tags:
+        - contact-us
+      summary: contact us
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  example: A B
+                subject:
+                  type: string
+                  example: abc
+                message:
+                  type: string
+                  example: adsfghjk
+                email:
+                  type: string
+                  example: xyz@gmail.com
+                phone_no:
+                  type: integer
+                  example: '9876543210'
       responses:
         '200':
           description: Successful response
