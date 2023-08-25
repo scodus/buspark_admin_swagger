@@ -494,29 +494,6 @@ paths:
           description: Successful response
           content:
             application/json: {}
-  /bus-schedule-search-by-dates:
-    get:
-      tags:
-        - bus schedule
-      summary: list by departure dates
-      security:
-        - bearerAuth: []
-      parameters:
-        - name: from_date
-          in: query
-          schema:
-            type: string
-          example: '2080-04-31'
-        - name: to_date
-          in: query
-          schema:
-            type: string
-          example: '2080-04-32'
-      responses:
-        '200':
-          description: Successful response
-          content:
-            application/json: {}
   /bus-schedule/{id}:
     get:
       tags:
@@ -609,6 +586,29 @@ paths:
             type: integer
           required: true
           example: '38'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /bus-schedule-search-by-dates:
+    get:
+      tags:
+        - bus schedule
+      summary: list by departure dates
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: from_date
+          in: query
+          schema:
+            type: string
+          example: '2080-04-31'
+        - name: to_date
+          in: query
+          schema:
+            type: string
+          example: '2080-04-32'
       responses:
         '200':
           description: Successful response
@@ -1228,7 +1228,7 @@ paths:
           in: query
           schema:
             type: string
-          example: '2080-04-32'
+          example: '2080-05-31'
         - name: bus_id
           in: query
           schema:

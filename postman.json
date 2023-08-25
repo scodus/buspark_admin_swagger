@@ -165,7 +165,8 @@
 								{
 									"key": "email",
 									"value": "deepaksamiti@gmail.com",
-									"type": "text"
+									"type": "text",
+									"disabled": true
 								},
 								{
 									"key": "password",
@@ -870,43 +871,6 @@
 					"response": []
 				},
 				{
-					"name": "list search",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{access_token}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "{{url}}/bus-schedule-search-by-dates?departure_date=2080-04-03&route_id=1",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"bus-schedule-search-by-dates"
-							],
-							"query": [
-								{
-									"key": "departure_date",
-									"value": "2080-04-03"
-								},
-								{
-									"key": "route_id",
-									"value": "1"
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
 					"name": "single",
 					"request": {
 						"auth": {
@@ -1006,6 +970,43 @@
 								{
 									"key": "bus_id",
 									"value": "38"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "list search",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/bus-schedule-search-by-dates?departure_date=2080-04-03&route_id=1",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"bus-schedule-search-by-dates"
+							],
+							"query": [
+								{
+									"key": "departure_date",
+									"value": "2080-04-03"
+								},
+								{
+									"key": "route_id",
+									"value": "1"
 								}
 							]
 						}
@@ -2295,7 +2296,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{url}}/chalani-list-search?departure_date=2080-04-32&bus_id=38",
+							"raw": "{{url}}/chalani-list-search?departure_date=2080-05-31&bus_id=38",
 							"host": [
 								"{{url}}"
 							],
@@ -2305,7 +2306,7 @@
 							"query": [
 								{
 									"key": "departure_date",
-									"value": "2080-04-32"
+									"value": "2080-05-31"
 								},
 								{
 									"key": "bus_id",
