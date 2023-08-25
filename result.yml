@@ -595,7 +595,7 @@ paths:
     get:
       tags:
         - bus schedule
-      summary: list by departure dates
+      summary: list search by dates
       security:
         - bearerAuth: []
       parameters:
@@ -603,12 +603,35 @@ paths:
           in: query
           schema:
             type: string
-          example: '2080-04-31'
+          example: '2080-04-03'
         - name: to_date
           in: query
           schema:
             type: string
           example: '2080-04-32'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /bus-schedule-search:
+    get:
+      tags:
+        - bus schedule
+      summary: list by departure date and route
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: departure_date
+          in: query
+          schema:
+            type: string
+          example: '2080-04-03'
+        - name: route_id
+          in: query
+          schema:
+            type: integer
+          example: '1'
       responses:
         '200':
           description: Successful response

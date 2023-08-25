@@ -977,7 +977,7 @@
 					"response": []
 				},
 				{
-					"name": "list search",
+					"name": "list search by dates",
 					"request": {
 						"auth": {
 							"type": "bearer",
@@ -992,12 +992,49 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{url}}/bus-schedule-search-by-dates?departure_date=2080-04-03&route_id=1",
+							"raw": "{{url}}/bus-schedule-search-by-dates?from_date=2080-04-03&to_date=2080-04-32",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
 								"bus-schedule-search-by-dates"
+							],
+							"query": [
+								{
+									"key": "from_date",
+									"value": "2080-04-03"
+								},
+								{
+									"key": "to_date",
+									"value": "2080-04-32"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "list by departure date and route",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/bus-schedule-search?departure_date=2080-04-03&route_id=1",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"bus-schedule-search"
 							],
 							"query": [
 								{
@@ -1574,50 +1611,6 @@
 								{
 									"key": "id",
 									"value": "127"
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "list by departure dates",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{access_token}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "GET",
-						"header": [],
-						"body": {
-							"mode": "formdata",
-							"formdata": []
-						},
-						"url": {
-							"raw": "{{url}}/bus-schedule-search-by-dates?from_date=2080-04-31&to_date=2080-04-32",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"bus-schedule-search-by-dates"
-							],
-							"query": [
-								{
-									"key": "from_date",
-									"value": "2080-04-31"
-								},
-								{
-									"key": "to_date",
-									"value": "2080-04-32"
 								}
 							]
 						}
