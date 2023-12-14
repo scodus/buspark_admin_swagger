@@ -478,10 +478,10 @@ paths:
                   example: '38'
                 departure_date:
                   type: string
-                  example: '2080-04-05'
+                  example: '2080-07-21'
                 departure_date_ad:
                   type: string
-                  example: '2023-07-21'
+                  example: '2023-11-07'
                 departure_time:
                   type: string
                   example: '20:00'
@@ -508,7 +508,7 @@ paths:
           schema:
             type: integer
           required: true
-          example: '127'
+          example: '153'
       responses:
         '200':
           description: Successful response
@@ -627,7 +627,7 @@ paths:
           in: query
           schema:
             type: string
-          example: '2080-04-03'
+          example: '2080-08-30'
         - name: route_id
           in: query
           schema:
@@ -744,7 +744,7 @@ paths:
           schema:
             type: integer
           required: true
-          example: '120'
+          example: '153'
       responses:
         '200':
           description: Successful response
@@ -939,18 +939,18 @@ paths:
           in: query
           schema:
             type: integer
-          example: '127'
+          example: '153'
         - name: date
           in: query
           schema:
             type: string
-          example: '2080-05-31'
+          example: '2080-08-30'
         - name: seat_id[]
           in: query
           schema:
             type: integer
           description: seat_id is array where seat_id = ["53", "54"]
-          example: '53'
+          example: '43'
       responses:
         '200':
           description: Successful response
@@ -989,7 +989,7 @@ paths:
             schema:
               type: object
               example:
-                schedule_id: 127
+                schedule_id: 153
                 route_id: 1
                 drop_location: X-place
                 rate: 12
@@ -998,7 +998,8 @@ paths:
                 contact_phone: 98xxxxxxxx
                 contact_name: X-man Mu
                 seat_id:
-                  - '53'
+                  - '43'
+                  - '54'
                 sub_route_price:
                   from_id: 1
                   to_id: 9
@@ -1013,11 +1014,70 @@ paths:
           description: Successful response
           content:
             application/json: {}
+  /bus-booking/{id}/:
+    post:
+      tags:
+        - bus booking
+      summary: update booking details
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                _method: PUT
+                drop_location: 1X-place
+                pickup_location: 2A-place
+                contact_phone: 98xxxxxxx0
+                contact_name: X-man Mua
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '666'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /bus-booking/{id}/update-booked-seat:
+    post:
+      tags:
+        - bus booking
+      summary: update booking seats
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                _method: PUT
+                new_booked_seat_id:
+                  - '55'
+                old_booked_seat_id: []
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '720'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
   /bus-booking/{id}/cancel:
     post:
       tags:
         - bus booking
-      summary: cancel booking
+      summary: cancel whole booking
       requestBody:
         content: {}
       security:
@@ -1028,7 +1088,34 @@ paths:
           schema:
             type: integer
           required: true
-          example: '626'
+          example: '670'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /bus-booking/{id}/seat-cancel:
+    post:
+      tags:
+        - bus booking
+      summary: seat wise cancel
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                new_booked_seat_id:
+                  - '48'
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '723'
       responses:
         '200':
           description: Successful response
@@ -1077,13 +1164,13 @@ paths:
           schema:
             type: string
           description: Departure Date From
-          example: '2080-04-31'
+          example: '2080-01-31'
         - name: to_date
           in: query
           schema:
             type: string
           description: Departure Date To
-          example: '2080-04-32'
+          example: '2080-08-31'
       responses:
         '200':
           description: Successful response
@@ -1101,7 +1188,7 @@ paths:
           in: query
           schema:
             type: integer
-          example: '117'
+          example: '153'
       responses:
         '200':
           description: Successful response
@@ -1138,35 +1225,7 @@ paths:
           schema:
             type: integer
           required: true
-          example: '620'
-      responses:
-        '200':
-          description: Successful response
-          content:
-            application/json: {}
-  /bus-booking/{id}/seat-cancel:
-    post:
-      tags:
-        - bus booking
-      summary: seat cancel
-      requestBody:
-        content:
-          application/json:
-            schema:
-              type: object
-              example:
-                new_booked_seat_id:
-                  - '50'
-                  - '55'
-      security:
-        - bearerAuth: []
-      parameters:
-        - name: id
-          in: path
-          schema:
-            type: integer
-          required: true
-          example: '632'
+          example: '687'
       responses:
         '200':
           description: Successful response
@@ -1252,12 +1311,12 @@ paths:
           in: query
           schema:
             type: string
-          example: '2080-05-31'
+          example: '2080-04-32'
         - name: bus_id
           in: query
           schema:
             type: integer
-          example: '38'
+          example: '29'
       responses:
         '200':
           description: Successful response
@@ -1280,17 +1339,7 @@ paths:
           in: query
           schema:
             type: string
-          example: '2080-04-17'
-        - name: from_date_ad
-          in: query
-          schema:
-            type: string
-          example: '2023-08-02'
-        - name: to_date_ad
-          in: query
-          schema:
-            type: string
-          example: '2023-08-02'
+          example: '2080-08-30'
       responses:
         '200':
           description: Successful response
@@ -1313,17 +1362,7 @@ paths:
           in: query
           schema:
             type: string
-          example: '2080-04-17'
-        - name: from_date_ad
-          in: query
-          schema:
-            type: string
-          example: '2023-08-02'
-        - name: to_date_ad
-          in: query
-          schema:
-            type: string
-          example: '2023-08-02'
+          example: '2080-08-30'
       responses:
         '200':
           description: Successful response

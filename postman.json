@@ -4,7 +4,7 @@
 		"name": "buspark v2/samiti apis",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "15009917",
-		"_collection_link": "https://lunar-robot-597788.postman.co/workspace/Bikash's-Workspace~07b4d747-08b6-4eac-9f94-41a4bad205fa/collection/15009917-556f60cf-eece-469e-a4c8-07f4652f7a92?action=share&source=collection_link&creator=15009917"
+		"_collection_link": "https://bikash-projects.postman.co/workspace/Bikash's-Workspace~07b4d747-08b6-4eac-9f94-41a4bad205fa/collection/15009917-556f60cf-eece-469e-a4c8-07f4652f7a92?action=share&source=collection_link&creator=15009917"
 	},
 	"item": [
 		{
@@ -68,7 +68,7 @@
 								{
 									"key": "image",
 									"type": "file",
-									"src": "/C:/Users/August/Downloads/Compressed/test-images/angry cat.jpg"
+									"src": "/C:/Users/August/Downloads/QRDown.png"
 								},
 								{
 									"key": "_method",
@@ -183,30 +183,30 @@
 								{
 									"key": "password",
 									"value": "P@ssw0rd",
-									"type": "text"
+									"type": "text",
+									"disabled": true
 								},
 								{
 									"key": "email",
-									"value": "samiti2@samiti.com",
+									"value": "samiti1@samiti.com",
 									"type": "text",
 									"disabled": true
 								},
 								{
 									"key": "password",
 									"value": "1234",
-									"type": "text",
-									"disabled": true
-								},
-								{
-									"key": "email",
-									"value": "bikashxaus@gmail.com",
 									"type": "text"
 								},
 								{
 									"key": "email",
-									"value": "admin@admin.com",
+									"value": "bikashxaus@gmail.com",
 									"type": "text",
 									"disabled": true
+								},
+								{
+									"key": "email",
+									"value": "admin@admin.com",
+									"type": "text"
 								}
 							]
 						},
@@ -897,7 +897,7 @@
 							"variable": [
 								{
 									"key": "id",
-									"value": "127"
+									"value": "153"
 								}
 							]
 						}
@@ -1029,7 +1029,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{url}}/bus-schedule-search?departure_date=2080-04-03&route_id=1",
+							"raw": "{{url}}/bus-schedule-search?departure_date=2080-08-30&route_id=1",
 							"host": [
 								"{{url}}"
 							],
@@ -1039,7 +1039,7 @@
 							"query": [
 								{
 									"key": "departure_date",
-									"value": "2080-04-03"
+									"value": "2080-08-30"
 								},
 								{
 									"key": "route_id",
@@ -1080,12 +1080,12 @@
 								},
 								{
 									"key": "departure_date",
-									"value": "2080-04-05",
+									"value": "2080-07-21",
 									"type": "text"
 								},
 								{
 									"key": "departure_date_ad",
-									"value": "2023-07-21",
+									"value": "2023-11-07",
 									"type": "text"
 								},
 								{
@@ -1333,7 +1333,7 @@
 							"variable": [
 								{
 									"key": "id",
-									"value": "120"
+									"value": "153"
 								}
 							]
 						}
@@ -1650,7 +1650,7 @@
 							}
 						},
 						"url": {
-							"raw": "{{url}}/bus-booking/pre-booking?from=1&to=2&schedule_id=127&date=2080-05-31&seat_id[]=53",
+							"raw": "{{url}}/bus-booking/pre-booking?from=1&to=2&schedule_id=153&date=2080-08-30&seat_id[]=43&seat_id[]=54",
 							"host": [
 								"{{url}}"
 							],
@@ -1669,21 +1669,20 @@
 								},
 								{
 									"key": "schedule_id",
-									"value": "127"
+									"value": "153"
 								},
 								{
 									"key": "date",
-									"value": "2080-05-31"
+									"value": "2080-08-30"
 								},
 								{
 									"key": "seat_id[]",
-									"value": "53",
+									"value": "43",
 									"description": "seat_id is array where seat_id = [\"53\", \"54\"]"
 								},
 								{
 									"key": "seat_id[]",
-									"value": "54",
-									"disabled": true
+									"value": "54"
 								}
 							]
 						}
@@ -1744,7 +1743,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"schedule_id\": 127,\n    \"route_id\": 1,\n    \"drop_location\": \"X-place\",\n    \"rate\": 12,\n    // \"qty\": 2,\n    \"discount\": \"1\",\n    // \"t_price\": 30,\n    // \"total\": 30,\n    \"paid\": 15,\n    // \"due\": \"\",\n    // \"return\": \"\",\n    \"contact_phone\": \"98xxxxxxxx\",\n    \"contact_name\": \"X-man Mu\",\n    // \"bus_details\": \"\",\n    \"seat_id\": [\n        \"53\"\n        // ,\n        // \"55\"\n    ],\n    // \"payment_status\": \"pending\",\n    // \"status\": \"OnBooking\",\n    \"sub_route_price\":\n    // \"\"\n    // [\n        {\n            \"from_id\": 1,\n            \"to_id\": 9,\n            \"sub_route_from\": \"KTM\",\n            \"sub_route_to\": \"Kohalpur\",\n            \"price\": \"12\",\n            \"discount\": \"2\"\n        }\n    // ]\n}",
+							"raw": "{\n    \"schedule_id\": 153,\n    \"route_id\": 1,\n    \"drop_location\": \"X-place\",\n    \"rate\": 12,\n    // \"qty\": 2,\n    \"discount\": \"1\",\n    // \"t_price\": 30,\n    // \"total\": 30,\n    \"paid\": 15,\n    // \"due\": \"\",\n    // \"return\": \"\",\n    \"contact_phone\": \"98xxxxxxxx\",\n    \"contact_name\": \"X-man Mu\",\n    // \"bus_details\": \"\",\n    \"seat_id\": [\n        \"43\"\n        ,\n        \"54\"\n    ]\n    // \"payment_status\": \"pending\",\n    // \"status\": \"OnBooking\",\n    ,\n    \"sub_route_price\":\n    // \"\"\n    // [\n        {\n            \"from_id\": 1,\n            \"to_id\": 9,\n            \"sub_route_from\": \"KTM\",\n            \"sub_route_to\": \"Kohalpur\",\n            \"price\": \"12\",\n            \"discount\": \"2\"\n        }\n    // ]\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -1765,7 +1764,95 @@
 					"response": []
 				},
 				{
-					"name": "cancel booking",
+					"name": "update booking details",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"_method\": \"PUT\",\n    \"drop_location\": \"1X-place\",\n    \"pickup_location\": \"2A-place\",\n    \"contact_phone\": \"98xxxxxxx0\",\n    \"contact_name\": \"X-man Mua\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/bus-booking/:id/",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"bus-booking",
+								":id",
+								""
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "666"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update booking seats",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"_method\": \"PUT\",\n    \"new_booked_seat_id\": [\n        \"55\"\n    ],\n    \"old_booked_seat_id\": [\n        \n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/bus-booking/:id/update-booked-seat",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"bus-booking",
+								":id",
+								"update-booked-seat"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "720"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "cancel whole booking",
 					"request": {
 						"auth": {
 							"type": "bearer",
@@ -1792,7 +1879,51 @@
 							"variable": [
 								{
 									"key": "id",
-									"value": "626"
+									"value": "670"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "seat wise cancel",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"new_booked_seat_id\": [\r\n        \"48\"\r\n    ] //seats_to_remain\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/bus-booking/:id/seat-cancel",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"bus-booking",
+								":id",
+								"seat-cancel"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "723"
 								}
 							]
 						}
@@ -1900,7 +2031,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "{{url}}/bus-booking/users-my-booking?from_date=2080-04-31&to_date=2080-04-32",
+							"raw": "{{url}}/bus-booking/users-my-booking?from_date=2080-01-31&to_date=2080-08-31",
 							"host": [
 								"{{url}}"
 							],
@@ -1911,12 +2042,12 @@
 							"query": [
 								{
 									"key": "from_date",
-									"value": "2080-04-31",
+									"value": "2080-01-31",
 									"description": "Departure Date From"
 								},
 								{
 									"key": "to_date",
-									"value": "2080-04-32",
+									"value": "2080-08-31",
 									"description": "Departure Date To"
 								},
 								{
@@ -1957,7 +2088,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "{{url}}/bus-booking-search?bus_schedule_id=117",
+							"raw": "{{url}}/bus-booking-search?bus_schedule_id=153",
 							"host": [
 								"{{url}}"
 							],
@@ -1977,7 +2108,7 @@
 								},
 								{
 									"key": "bus_schedule_id",
-									"value": "117"
+									"value": "153"
 								}
 							]
 						}
@@ -2068,51 +2199,7 @@
 							"variable": [
 								{
 									"key": "id",
-									"value": "620"
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "seat cancel",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{access_token}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"new_booked_seat_id\": [\r\n        \"50\",\r\n        \"55\"\r\n    ]\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "{{url}}/bus-booking/:id/seat-cancel",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"bus-booking",
-								":id",
-								"seat-cancel"
-							],
-							"variable": [
-								{
-									"key": "id",
-									"value": "632"
+									"value": "687"
 								}
 							]
 						}
@@ -2289,7 +2376,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{url}}/chalani-list-search?departure_date=2080-05-31&bus_id=38",
+							"raw": "{{url}}/chalani-list-search?departure_date=2080-04-32&bus_id=29",
 							"host": [
 								"{{url}}"
 							],
@@ -2299,11 +2386,11 @@
 							"query": [
 								{
 									"key": "departure_date",
-									"value": "2080-05-31"
+									"value": "2080-04-32"
 								},
 								{
 									"key": "bus_id",
-									"value": "38"
+									"value": "29"
 								}
 							]
 						}
@@ -2331,7 +2418,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{url}}/sales-report-list-counter-online?from_date=2080-04-17&to_date=2080-04-17&from_date_ad=2023-08-02&to_date_ad=2023-08-02",
+							"raw": "{{url}}/sales-report-list-counter-online?from_date=2080-04-17&to_date=2080-08-30",
 							"host": [
 								"{{url}}"
 							],
@@ -2345,15 +2432,17 @@
 								},
 								{
 									"key": "to_date",
-									"value": "2080-04-17"
+									"value": "2080-08-30"
 								},
 								{
 									"key": "from_date_ad",
-									"value": "2023-08-02"
+									"value": "2023-08-02",
+									"disabled": true
 								},
 								{
 									"key": "to_date_ad",
-									"value": "2023-08-02"
+									"value": "2023-08-02",
+									"disabled": true
 								}
 							]
 						}
@@ -2376,7 +2465,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{url}}/sales-report-list-all-user?from_date=2080-04-17&to_date=2080-04-17&from_date_ad=2023-08-02&to_date_ad=2023-08-02",
+							"raw": "{{url}}/sales-report-list-all-user?from_date=2080-04-17&to_date=2080-08-30",
 							"host": [
 								"{{url}}"
 							],
@@ -2390,15 +2479,17 @@
 								},
 								{
 									"key": "to_date",
-									"value": "2080-04-17"
+									"value": "2080-08-30"
 								},
 								{
 									"key": "from_date_ad",
-									"value": "2023-08-02"
+									"value": "2023-08-02",
+									"disabled": true
 								},
 								{
 									"key": "to_date_ad",
-									"value": "2023-08-02"
+									"value": "2023-08-02",
+									"disabled": true
 								}
 							]
 						}
