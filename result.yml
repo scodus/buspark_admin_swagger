@@ -129,8 +129,8 @@ paths:
                   type: string
                   example: admin@admin.com
                 password:
-                  type: integer
-                  example: '1234'
+                  type: string
+                  example: P@ssw0rd
       responses:
         '200':
           description: Successful response
@@ -991,6 +991,7 @@ paths:
               example:
                 schedule_id: 153
                 route_id: 1
+                pickup_location: X-place
                 drop_location: X-place
                 rate: 12
                 discount: '1'
@@ -1014,7 +1015,7 @@ paths:
           description: Successful response
           content:
             application/json: {}
-  /bus-booking/{id}/:
+  /bus-booking/{id}/update-detail:
     post:
       tags:
         - bus booking
@@ -1026,10 +1027,10 @@ paths:
               type: object
               example:
                 _method: PUT
-                drop_location: 1X-place
-                pickup_location: 2A-place
-                contact_phone: 98xxxxxxx0
-                contact_name: X-man Mua
+                drop_location: 1X-place00
+                pickup_location: 2A-place00
+                contact_phone: 98xxxxx000
+                contact_name: X-man 00000
       security:
         - bearerAuth: []
       parameters:
@@ -1038,7 +1039,7 @@ paths:
           schema:
             type: integer
           required: true
-          example: '666'
+          example: '725'
       responses:
         '200':
           description: Successful response

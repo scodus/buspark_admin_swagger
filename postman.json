@@ -149,8 +149,8 @@
 							"script": {
 								"exec": [
 									"const response = pm.response.json()\r",
-									"pm.environment.set('access_token', response.token)\r",
-									"pm.environment.set('refresh_token', response.refresh_token)"
+									"pm.environment.set('access_token', response.data.token)\r",
+									"pm.environment.set('refresh_token', response.data.refresh_token)"
 								],
 								"type": "text/javascript"
 							}
@@ -171,8 +171,7 @@
 								{
 									"key": "password",
 									"value": "1234",
-									"type": "text",
-									"disabled": true
+									"type": "text"
 								},
 								{
 									"key": "email",
@@ -191,11 +190,6 @@
 									"value": "samiti1@samiti.com",
 									"type": "text",
 									"disabled": true
-								},
-								{
-									"key": "password",
-									"value": "1234",
-									"type": "text"
 								},
 								{
 									"key": "email",
@@ -1743,7 +1737,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"schedule_id\": 153,\n    \"route_id\": 1,\n    \"drop_location\": \"X-place\",\n    \"rate\": 12,\n    // \"qty\": 2,\n    \"discount\": \"1\",\n    // \"t_price\": 30,\n    // \"total\": 30,\n    \"paid\": 15,\n    // \"due\": \"\",\n    // \"return\": \"\",\n    \"contact_phone\": \"98xxxxxxxx\",\n    \"contact_name\": \"X-man Mu\",\n    // \"bus_details\": \"\",\n    \"seat_id\": [\n        \"43\"\n        ,\n        \"54\"\n    ]\n    // \"payment_status\": \"pending\",\n    // \"status\": \"OnBooking\",\n    ,\n    \"sub_route_price\":\n    // \"\"\n    // [\n        {\n            \"from_id\": 1,\n            \"to_id\": 9,\n            \"sub_route_from\": \"KTM\",\n            \"sub_route_to\": \"Kohalpur\",\n            \"price\": \"12\",\n            \"discount\": \"2\"\n        }\n    // ]\n}",
+							"raw": "{\n    \"schedule_id\": 153,\n    \"route_id\": 1,\n    \"pickup_location\": \"X-place\",\n    \"drop_location\": \"X-place\",\n    \"rate\": 12,\n    // \"qty\": 2,\n    \"discount\": \"1\",\n    // \"t_price\": 30,\n    // \"total\": 30,\n    \"paid\": 15,\n    // \"due\": \"\",\n    // \"return\": \"\",\n    \"contact_phone\": \"98xxxxxxxx\",\n    \"contact_name\": \"X-man Mu\",\n    // \"bus_details\": \"\",\n    \"seat_id\": [\n        \"43\"\n        ,\n        \"54\"\n    ]\n    // \"payment_status\": \"pending\",\n    // \"status\": \"OnBooking\",\n    ,\n    \"sub_route_price\":\n    // \"\"\n    // [\n        {\n            \"from_id\": 1,\n            \"to_id\": 9,\n            \"sub_route_from\": \"KTM\",\n            \"sub_route_to\": \"Kohalpur\",\n            \"price\": \"12\",\n            \"discount\": \"2\"\n        }\n    // ]\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -1780,7 +1774,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"_method\": \"PUT\",\n    \"drop_location\": \"1X-place\",\n    \"pickup_location\": \"2A-place\",\n    \"contact_phone\": \"98xxxxxxx0\",\n    \"contact_name\": \"X-man Mua\"\n}",
+							"raw": "{\n    \"_method\": \"PUT\",\n    \"drop_location\": \"1X-place00\",\n    \"pickup_location\": \"2A-place00\",\n    \"contact_phone\": \"98xxxxx000\",\n    \"contact_name\": \"X-man 00000\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -1788,19 +1782,19 @@
 							}
 						},
 						"url": {
-							"raw": "{{url}}/bus-booking/:id/",
+							"raw": "{{url}}/bus-booking/:id/update-detail",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
 								"bus-booking",
 								":id",
-								""
+								"update-detail"
 							],
 							"variable": [
 								{
 									"key": "id",
-									"value": "666"
+									"value": "725"
 								}
 							]
 						}
