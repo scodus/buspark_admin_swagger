@@ -16,7 +16,9 @@ info:
     name: MIT
     url: https://es.wikipedia.org/wiki/Licencia_MIT
 servers:
-  - url: https://buspark.scodus.com/api/v2
+  - url: https://buspark.scodus.com
+    description: Base URL
+  - url: https://ticketing.madani.com.np
     description: Base URL
 components:
   securitySchemes:
@@ -27,26 +29,62 @@ components:
       type: http
       scheme: noauth
 tags:
-  - name: user
-  - name: site-setting
-  - name: bus
-  - name: location
-  - name: route
-  - name: bus schedule
-  - name: bus schedule > for booking
-  - name: bus booking
-  - name: role
-  - name: departure list
-  - name: chalani
-  - name: sales report
+  - name: Authentication
   - name: association
+  - name: bus
+  - name: bus-schedule
+  - name: bus-schedule > for booking
+  - name: bus booking
+  - name: chalani
   - name: company
   - name: contact-us
+  - name: departure list
+  - name: location
+  - name: role
+  - name: route
+  - name: sales report
+  - name: site-setting
 paths:
-  /user-detail:
+  /api/v2/login:
+    post:
+      tags:
+        - Authentication
+      summary: login
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                  example: aayushpandey616@gmail.com
+                password:
+                  type: string
+                  example: P@ssw0rd
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/v2/logout:
+    post:
+      tags:
+        - Authentication
+      summary: logout
+      requestBody:
+        content: {}
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/v2/user-detail:
     get:
       tags:
-        - user
+        - Authentication
       summary: get profile
       security:
         - bearerAuth: []
@@ -57,7 +95,7 @@ paths:
             application/json: {}
     post:
       tags:
-        - user
+        - Authentication
       summary: update profile
       requestBody:
         content:
@@ -84,10 +122,10 @@ paths:
           description: Successful response
           content:
             application/json: {}
-  /password-change:
+  /api/v2/password-change:
     post:
       tags:
-        - user
+        - Authentication
       summary: change password
       requestBody:
         content:
@@ -114,46 +152,10 @@ paths:
           description: Successful response
           content:
             application/json: {}
-  /login:
+  /api/v2/refresh-token/{refresh_token}:
     post:
       tags:
-        - user
-      summary: login
-      requestBody:
-        content:
-          multipart/form-data:
-            schema:
-              type: object
-              properties:
-                email:
-                  type: string
-                  example: admin@admin.com
-                password:
-                  type: string
-                  example: P@ssw0rd
-      responses:
-        '200':
-          description: Successful response
-          content:
-            application/json: {}
-  /logout:
-    post:
-      tags:
-        - user
-      summary: logout
-      requestBody:
-        content: {}
-      security:
-        - bearerAuth: []
-      responses:
-        '200':
-          description: Successful response
-          content:
-            application/json: {}
-  /refresh-token/{refresh_token}:
-    post:
-      tags:
-        - user
+        - Authentication
       summary: refresh token
       requestBody:
         content:
@@ -174,10 +176,10 @@ paths:
           description: Successful response
           content:
             application/json: {}
-  /reset-password-mail:
+  /api/v2/reset-password-mail:
     post:
       tags:
-        - user
+        - Authentication
       summary: reset password mail
       requestBody:
         content:
@@ -193,10 +195,10 @@ paths:
           description: Successful response
           content:
             application/json: {}
-  /reset-password-otp-verification:
+  /api/v2/reset-password-otp-verification:
     post:
       tags:
-        - user
+        - Authentication
       summary: reset password otp verification
       requestBody:
         content:
@@ -212,10 +214,10 @@ paths:
           description: Successful response
           content:
             application/json: {}
-  /reset-password:
+  /api/v2/reset-password:
     post:
       tags:
-        - user
+        - Authentication
       summary: reset password
       requestBody:
         content:
@@ -237,20 +239,10 @@ paths:
           description: Successful response
           content:
             application/json: {}
-  /site-setting:
+  /api/v2/association:
     get:
       tags:
-        - site-setting
-      summary: site-setting
-      responses:
-        '200':
-          description: Successful response
-          content:
-            application/json: {}
-  /bus:
-    get:
-      tags:
-        - bus
+        - association
       summary: list
       security:
         - bearerAuth: []
@@ -259,20 +251,39 @@ paths:
           description: Successful response
           content:
             application/json: {}
-  /bus/list/paginated:
+  /api/v2/association/{slug}:
     get:
       tags:
-        - bus
-      summary: list paginated
+        - association
+      summary: single
       security:
         - bearerAuth: []
       parameters:
-        - name: limit
+        - name: slug
+          in: path
+          schema:
+            type: string
+          required: true
+          example: madonna-savage
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/v2/bus:
+    get:
+      tags:
+        - bus
+      summary: list
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: route_id
           in: query
           schema:
             type: integer
-          example: '8'
-        - name: page
+          example: '27'
+        - name: company_id
           in: query
           schema:
             type: integer
@@ -282,7 +293,47 @@ paths:
           description: Successful response
           content:
             application/json: {}
-  /bus/{id}:
+  /api/v2/bus/list/paginated:
+    get:
+      tags:
+        - bus
+      summary: list data
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: paginate
+          in: query
+          schema:
+            type: integer
+          example: '1'
+        - name: page
+          in: query
+          schema:
+            type: string
+        - name: limit
+          in: query
+          schema:
+            type: string
+        - name: search_keyword
+          in: query
+          schema:
+            type: string
+        - name: route_id
+          in: query
+          schema:
+            type: integer
+          example: '27'
+        - name: company_id
+          in: query
+          schema:
+            type: integer
+          example: '1'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/v2/bus/{id}:
     get:
       tags:
         - bus
@@ -301,7 +352,7 @@ paths:
           description: Successful response
           content:
             application/json: {}
-  /bus/{id}/seats:
+  /api/v2/bus/{id}/seats:
     get:
       tags:
         - bus
@@ -320,91 +371,10 @@ paths:
           description: Successful response
           content:
             application/json: {}
-  /location:
+  /api/v2/bus-schedule/search/for-booking:
     get:
       tags:
-        - location
-      summary: list
-      security:
-        - bearerAuth: []
-      responses:
-        '200':
-          description: Successful response
-          content:
-            application/json: {}
-  /location/{id}:
-    get:
-      tags:
-        - location
-      summary: single
-      security:
-        - bearerAuth: []
-      parameters:
-        - name: id
-          in: path
-          schema:
-            type: integer
-          required: true
-          example: '12'
-      responses:
-        '200':
-          description: Successful response
-          content:
-            application/json: {}
-  /location/by-slug/{slug}:
-    get:
-      tags:
-        - location
-      summary: single by slug
-      security:
-        - bearerAuth: []
-      parameters:
-        - name: slug
-          in: path
-          schema:
-            type: string
-          required: true
-          example: finn-wiggins
-      responses:
-        '200':
-          description: Successful response
-          content:
-            application/json: {}
-  /route:
-    get:
-      tags:
-        - route
-      summary: list
-      security:
-        - bearerAuth: []
-      responses:
-        '200':
-          description: Successful response
-          content:
-            application/json: {}
-  /route/{id}:
-    get:
-      tags:
-        - route
-      summary: single
-      security:
-        - bearerAuth: []
-      parameters:
-        - name: id
-          in: path
-          schema:
-            type: integer
-          required: true
-          example: '1'
-      responses:
-        '200':
-          description: Successful response
-          content:
-            application/json: {}
-  /bus-schedule/search/for-booking:
-    get:
-      tags:
-        - bus schedule > for booking
+        - bus-schedule > for booking
       summary: search list
       security:
         - bearerAuth: []
@@ -429,10 +399,10 @@ paths:
           description: Successful response
           content:
             application/json: {}
-  /bus-schedule/{bus_schedule_id}/for-booking:
+  /api/v2/bus-schedule/{bus_schedule_id}/for-booking:
     get:
       tags:
-        - bus schedule > for booking
+        - bus-schedule > for booking
       summary: single (get bus seat)
       security:
         - bearerAuth: []
@@ -448,10 +418,10 @@ paths:
           description: Successful response
           content:
             application/json: {}
-  /bus-schedule:
+  /api/v2/bus-schedule:
     get:
       tags:
-        - bus schedule
+        - bus-schedule
       summary: list
       security:
         - bearerAuth: []
@@ -462,7 +432,7 @@ paths:
             application/json: {}
     post:
       tags:
-        - bus schedule
+        - bus-schedule
       summary: store
       requestBody:
         content:
@@ -478,7 +448,7 @@ paths:
                   example: '38'
                 departure_date:
                   type: string
-                  example: '2080-07-21'
+                  example: '2080-11-01'
                 departure_date_ad:
                   type: string
                   example: '2023-11-07'
@@ -495,10 +465,10 @@ paths:
           description: Successful response
           content:
             application/json: {}
-  /bus-schedule/{id}:
+  /api/v2/bus-schedule/{id}:
     get:
       tags:
-        - bus schedule
+        - bus-schedule
       summary: single
       security:
         - bearerAuth: []
@@ -516,7 +486,7 @@ paths:
             application/json: {}
     post:
       tags:
-        - bus schedule
+        - bus-schedule
       summary: update
       requestBody:
         content:
@@ -530,14 +500,14 @@ paths:
                 is_discount_available: 1
                 main_route_discount: 3
                 sub_route_discount:
-                  - from_id: '1'
-                    to_id: '9'
-                    price: '12'
-                    discount: '2'
+                  - from_id: 1
+                    to_id: 9
+                    price: 12
+                    discount: 2
                     status: Active
-                  - from_id: '8'
-                    to_id: '9'
-                    price: '10'
+                  - from_id: 8
+                    to_id: 9
+                    price: 10
                     discount: null
                     status: Active
       security:
@@ -554,10 +524,10 @@ paths:
           description: Successful response
           content:
             application/json: {}
-  /bus-schedule/route/{route_id}/buses:
+  /api/v2/bus-schedule/route/{route_id}/buses:
     get:
       tags:
-        - bus schedule
+        - bus-schedule
       summary: get route buses
       security:
         - bearerAuth: []
@@ -573,10 +543,10 @@ paths:
           description: Successful response
           content:
             application/json: {}
-  /bus-schedule/bus/{bus_id}/route:
+  /api/v2/bus-schedule/bus/{bus_id}/route:
     get:
       tags:
-        - bus schedule
+        - bus-schedule
       summary: get bus route
       security:
         - bearerAuth: []
@@ -592,33 +562,48 @@ paths:
           description: Successful response
           content:
             application/json: {}
-  /bus-schedule-search-by-dates:
+  /api/v2/bus-schedule-search-by-dates:
     get:
       tags:
-        - bus schedule
+        - bus-schedule
       summary: list search by dates
       security:
         - bearerAuth: []
       parameters:
+        - name: paginate
+          in: query
+          schema:
+            type: integer
+          example: '1'
+        - name: perPage
+          in: query
+          schema:
+            type: integer
+          example: '1'
+        - name: currentPage
+          in: query
+          schema:
+            type: integer
+          example: '2'
         - name: from_date
           in: query
           schema:
             type: string
-          example: '2080-04-03'
+          example: '2080-04-29'
         - name: to_date
           in: query
           schema:
             type: string
-          example: '2080-04-32'
+          example: '2080-06-29'
       responses:
         '200':
           description: Successful response
           content:
             application/json: {}
-  /bus-schedule-search:
+  /api/v2/bus-schedule-search:
     get:
       tags:
-        - bus schedule
+        - bus-schedule
       summary: list by departure date and route
       security:
         - bearerAuth: []
@@ -638,10 +623,10 @@ paths:
           description: Successful response
           content:
             application/json: {}
-  /bus-schedule/{id}/status-change:
+  /api/v2/bus-schedule/{id}/status-change:
     post:
       tags:
-        - bus schedule
+        - bus-schedule
       summary: status change
       requestBody:
         content:
@@ -669,10 +654,10 @@ paths:
           description: Successful response
           content:
             application/json: {}
-  /bus-schedule/{id}/booking-status-change:
+  /api/v2/bus-schedule/{id}/booking-status-change:
     post:
       tags:
-        - bus schedule
+        - bus-schedule
       summary: booking status change
       requestBody:
         content:
@@ -700,10 +685,10 @@ paths:
           description: Successful response
           content:
             application/json: {}
-  /bus-schedule/{id}/departure-time-change:
+  /api/v2/bus-schedule/{id}/departure-time-change:
     post:
       tags:
-        - bus schedule
+        - bus-schedule
       summary: departure time change
       requestBody:
         content:
@@ -731,10 +716,10 @@ paths:
           description: Successful response
           content:
             application/json: {}
-  /bus-schedule/{id}/bus-seats:
+  /api/v2/bus-schedule/{id}/bus-seats:
     get:
       tags:
-        - bus schedule
+        - bus-schedule
       summary: scheduled bus seats
       security:
         - bearerAuth: []
@@ -744,16 +729,17 @@ paths:
           schema:
             type: integer
           required: true
-          example: '153'
+          description: '170'
+          example: '87'
       responses:
         '200':
           description: Successful response
           content:
             application/json: {}
-  /bus-schedule/{id}/bus-seats/enable-disable:
+  /api/v2/bus-schedule/{id}/bus-seats/enable-disable:
     post:
       tags:
-        - bus schedule
+        - bus-schedule
       summary: scheduled bus seats enable disable
       requestBody:
         content:
@@ -762,12 +748,11 @@ paths:
               type: object
               example:
                 seat_id:
-                  - '53'
-                  - '41'
-                  - '54'
-                  - '50'
-                  - '46'
-                  - '55'
+                  - 53
+                  - 41
+                  - 54
+                  - 50
+                  - 46
       security:
         - bearerAuth: []
       parameters:
@@ -782,10 +767,10 @@ paths:
           description: Successful response
           content:
             application/json: {}
-  /bus-schedule/{id}/bus-seats/available-to:
+  /api/v2/bus-schedule/{id}/bus-seats/available-to:
     post:
       tags:
-        - bus schedule
+        - bus-schedule
       summary: scheduled bus seats enabled Availability
       requestBody:
         content:
@@ -794,9 +779,9 @@ paths:
               type: object
               example:
                 seat_id:
-                  - '53'
-                  - '41'
-                  - '54'
+                  - 53
+                  - 41
+                  - 54
                 available_to: Online
       security:
         - bearerAuth: []
@@ -812,10 +797,10 @@ paths:
           description: Successful response
           content:
             application/json: {}
-  /bus-schedule/{id}/counters:
+  /api/v2/bus-schedule/{id}/counters:
     get:
       tags:
-        - bus schedule
+        - bus-schedule
       summary: scheduled bus seats Get Counters
       security:
         - bearerAuth: []
@@ -825,16 +810,16 @@ paths:
           schema:
             type: integer
           required: true
-          example: '120'
+          example: '170'
       responses:
         '200':
           description: Successful response
           content:
             application/json: {}
-  /bus-schedule/{id}/bus-seats/counter-assign:
+  /api/v2/bus-schedule/{id}/bus-seats/counter-assign:
     post:
       tags:
-        - bus schedule
+        - bus-schedule
       summary: scheduled bus seats Counter Assign
       requestBody:
         content:
@@ -843,7 +828,8 @@ paths:
               type: object
               example:
                 seat_id:
-                  - '55'
+                  - 49
+                  - 53
                 counter_availability: 21
       security:
         - bearerAuth: []
@@ -853,16 +839,16 @@ paths:
           schema:
             type: integer
           required: true
-          example: '120'
+          example: '170'
       responses:
         '200':
           description: Successful response
           content:
             application/json: {}
-  /bus-schedule/{id}/route-bus-facility-type-price:
+  /api/v2/bus-schedule/{id}/route-bus-facility-type-price:
     get:
       tags:
-        - bus schedule
+        - bus-schedule
       summary: bus schedule->route bus facility type price
       security:
         - bearerAuth: []
@@ -878,10 +864,10 @@ paths:
           description: Successful response
           content:
             application/json: {}
-  /bus-schedule/sub-route-discount/{id}:
+  /api/v2/bus-schedule/sub-route-discount/{id}:
     post:
       tags:
-        - bus schedule
+        - bus-schedule
       summary: store sub route discount
       requestBody:
         content:
@@ -893,15 +879,15 @@ paths:
                 is_discount_available: 1
                 main_route_discount: 3
                 sub_route_discount:
-                  - from_id: '1'
-                    to_id: '9'
-                    price: '12'
-                    discount: '2'
+                  - from_id: 1
+                    to_id: 9
+                    price: 12
+                    discount: 2
                     status: Active
-                  - from_id: '8'
-                    to_id: '9'
-                    price: '10'
-                    discount: '4'
+                  - from_id: 8
+                    to_id: 9
+                    price: 10
+                    discount: 4
                     status: Active
       security:
         - bearerAuth: []
@@ -917,7 +903,7 @@ paths:
           description: Successful response
           content:
             application/json: {}
-  /bus-booking/pre-booking:
+  /api/v2/bus-booking/pre-booking:
     get:
       tags:
         - bus booking
@@ -939,24 +925,24 @@ paths:
           in: query
           schema:
             type: integer
-          example: '153'
+          example: '170'
         - name: date
           in: query
           schema:
             type: string
-          example: '2080-08-30'
+          example: '2080-10-29'
         - name: seat_id[]
           in: query
           schema:
             type: integer
-          description: seat_id is array where seat_id = ["53", "54"]
-          example: '43'
+          description: seat_id is array where seat_id = [53,54]
+          example: '41'
       responses:
         '200':
           description: Successful response
           content:
             application/json: {}
-  /bus-booking/pre-booking-timeout:
+  /api/v2/bus-booking/pre-booking-timeout:
     post:
       tags:
         - bus booking
@@ -967,10 +953,10 @@ paths:
             schema:
               type: object
               example:
-                schedule_id: 117
+                schedule_id: 170
                 seat_id:
-                  - '50'
-                  - '55'
+                  - 41
+                  - 42
       security:
         - bearerAuth: []
       responses:
@@ -978,7 +964,7 @@ paths:
           description: Successful response
           content:
             application/json: {}
-  /bus-booking/store:
+  /api/v2/bus-booking/store:
     post:
       tags:
         - bus booking
@@ -994,20 +980,20 @@ paths:
                 pickup_location: X-place
                 drop_location: X-place
                 rate: 12
-                discount: '1'
+                discount: 1
                 paid: 15
                 contact_phone: 98xxxxxxxx
                 contact_name: X-man Mu
                 seat_id:
-                  - '43'
-                  - '54'
+                  - 43
+                  - 54
                 sub_route_price:
                   from_id: 1
                   to_id: 9
                   sub_route_from: KTM
                   sub_route_to: Kohalpur
-                  price: '12'
-                  discount: '2'
+                  price: 12
+                  discount: 2
       security:
         - bearerAuth: []
       responses:
@@ -1015,7 +1001,7 @@ paths:
           description: Successful response
           content:
             application/json: {}
-  /bus-booking/{id}/update-detail:
+  /api/v2/bus-booking/{id}/update-detail:
     post:
       tags:
         - bus booking
@@ -1045,7 +1031,7 @@ paths:
           description: Successful response
           content:
             application/json: {}
-  /bus-booking/{id}/update-booked-seat:
+  /api/v2/bus-booking/{id}/update-booked-seat:
     post:
       tags:
         - bus booking
@@ -1058,7 +1044,7 @@ paths:
               example:
                 _method: PUT
                 new_booked_seat_id:
-                  - '55'
+                  - 55
                 old_booked_seat_id: []
       security:
         - bearerAuth: []
@@ -1074,7 +1060,7 @@ paths:
           description: Successful response
           content:
             application/json: {}
-  /bus-booking/{id}/cancel:
+  /api/v2/bus-booking/{id}/cancel:
     post:
       tags:
         - bus booking
@@ -1095,7 +1081,7 @@ paths:
           description: Successful response
           content:
             application/json: {}
-  /bus-booking/{id}/seat-cancel:
+  /api/v2/bus-booking/{id}/seat-cancel:
     post:
       tags:
         - bus booking
@@ -1107,7 +1093,7 @@ paths:
               type: object
               example:
                 new_booked_seat_id:
-                  - '48'
+                  - 48
       security:
         - bearerAuth: []
       parameters:
@@ -1122,7 +1108,7 @@ paths:
           description: Successful response
           content:
             application/json: {}
-  /bus-booking/users-my-booking/users-from-role:
+  /api/v2/bus-booking/users-my-booking/users-from-role:
     get:
       tags:
         - bus booking
@@ -1140,7 +1126,7 @@ paths:
           description: Successful response
           content:
             application/json: {}
-  /bus-booking/users-my-booking/users:
+  /api/v2/bus-booking/users-my-booking/users:
     get:
       tags:
         - bus booking
@@ -1152,7 +1138,7 @@ paths:
           description: Successful response
           content:
             application/json: {}
-  /bus-booking/users-my-booking:
+  /api/v2/bus-booking/users-my-booking:
     get:
       tags:
         - bus booking
@@ -1177,7 +1163,7 @@ paths:
           description: Successful response
           content:
             application/json: {}
-  /bus-booking-search:
+  /api/v2/bus-booking-search:
     get:
       tags:
         - bus booking
@@ -1195,7 +1181,7 @@ paths:
           description: Successful response
           content:
             application/json: {}
-  /bus-booking-cancelled-search:
+  /api/v2/bus-booking-cancelled-search:
     get:
       tags:
         - bus booking
@@ -1213,7 +1199,7 @@ paths:
           description: Successful response
           content:
             application/json: {}
-  /bus-booking/{id}:
+  /api/v2/bus-booking/{id}:
     get:
       tags:
         - bus booking
@@ -1232,75 +1218,7 @@ paths:
           description: Successful response
           content:
             application/json: {}
-  /role:
-    get:
-      tags:
-        - role
-      summary: list
-      security:
-        - bearerAuth: []
-      responses:
-        '200':
-          description: Successful response
-          content:
-            application/json: {}
-  /role/{id}:
-    get:
-      tags:
-        - role
-      summary: single
-      security:
-        - bearerAuth: []
-      parameters:
-        - name: id
-          in: path
-          schema:
-            type: integer
-          required: true
-          example: '3'
-      responses:
-        '200':
-          description: Successful response
-          content:
-            application/json: {}
-  /role/{id}/users:
-    get:
-      tags:
-        - role
-      summary: role - users
-      security:
-        - bearerAuth: []
-      parameters:
-        - name: id
-          in: path
-          schema:
-            type: integer
-          required: true
-          example: '3'
-      responses:
-        '200':
-          description: Successful response
-          content:
-            application/json: {}
-  /departure-list-search:
-    get:
-      tags:
-        - departure list
-      summary: list
-      security:
-        - bearerAuth: []
-      parameters:
-        - name: departure_date
-          in: query
-          schema:
-            type: string
-          example: '2080-04-32'
-      responses:
-        '200':
-          description: Successful response
-          content:
-            application/json: {}
-  /chalani-list-search:
+  /api/v2/chalani-list-search:
     get:
       tags:
         - chalani
@@ -1323,84 +1241,7 @@ paths:
           description: Successful response
           content:
             application/json: {}
-  /sales-report-list-counter-online:
-    get:
-      tags:
-        - sales report
-      summary: list counter online
-      security:
-        - bearerAuth: []
-      parameters:
-        - name: from_date
-          in: query
-          schema:
-            type: string
-          example: '2080-04-17'
-        - name: to_date
-          in: query
-          schema:
-            type: string
-          example: '2080-08-30'
-      responses:
-        '200':
-          description: Successful response
-          content:
-            application/json: {}
-  /sales-report-list-all-user:
-    get:
-      tags:
-        - sales report
-      summary: list all user
-      security:
-        - bearerAuth: []
-      parameters:
-        - name: from_date
-          in: query
-          schema:
-            type: string
-          example: '2080-04-17'
-        - name: to_date
-          in: query
-          schema:
-            type: string
-          example: '2080-08-30'
-      responses:
-        '200':
-          description: Successful response
-          content:
-            application/json: {}
-  /association:
-    get:
-      tags:
-        - association
-      summary: list
-      security:
-        - bearerAuth: []
-      responses:
-        '200':
-          description: Successful response
-          content:
-            application/json: {}
-  /association/{slug}:
-    get:
-      tags:
-        - association
-      summary: single
-      security:
-        - bearerAuth: []
-      parameters:
-        - name: slug
-          in: path
-          schema:
-            type: string
-          required: true
-          example: madonna-savage
-      responses:
-        '200':
-          description: Successful response
-          content:
-            application/json: {}
-  /company:
+  /api/v2/company:
     get:
       tags:
         - company
@@ -1412,7 +1253,7 @@ paths:
           description: Successful response
           content:
             application/json: {}
-  /company/{slug}:
+  /api/v2/company/{slug}:
     get:
       tags:
         - company
@@ -1431,7 +1272,7 @@ paths:
           description: Successful response
           content:
             application/json: {}
-  /contact-us:
+  /api/v2/contact-us:
     post:
       tags:
         - contact-us
@@ -1457,6 +1298,211 @@ paths:
                 phone_no:
                   type: integer
                   example: '9876543210'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/v2/departure-list-search:
+    get:
+      tags:
+        - departure list
+      summary: list
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: departure_date
+          in: query
+          schema:
+            type: string
+          example: '2080-04-32'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/v2/location:
+    get:
+      tags:
+        - location
+      summary: list
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/v2/location/{id}:
+    get:
+      tags:
+        - location
+      summary: single
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '12'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/v2/location/by-slug/{slug}:
+    get:
+      tags:
+        - location
+      summary: single by slug
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: slug
+          in: path
+          schema:
+            type: string
+          required: true
+          example: finn-wiggins
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/v2/role:
+    get:
+      tags:
+        - role
+      summary: list
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/v2/role/{id}:
+    get:
+      tags:
+        - role
+      summary: single
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '3'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/v2/role/{id}/users:
+    get:
+      tags:
+        - role
+      summary: role - users
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '3'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/v2/route:
+    get:
+      tags:
+        - route
+      summary: list
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/v2/route/{id}:
+    get:
+      tags:
+        - route
+      summary: single
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: id
+          in: path
+          schema:
+            type: integer
+          required: true
+          example: '1'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/v2/sales-report-list-counter-online:
+    get:
+      tags:
+        - sales report
+      summary: list counter online
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: from_date
+          in: query
+          schema:
+            type: string
+          example: '2080-04-17'
+        - name: to_date
+          in: query
+          schema:
+            type: string
+          example: '2080-08-30'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/v2/sales-report-list-all-user:
+    get:
+      tags:
+        - sales report
+      summary: list all user
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: from_date
+          in: query
+          schema:
+            type: string
+          example: '2080-04-17'
+        - name: to_date
+          in: query
+          schema:
+            type: string
+          example: '2080-08-30'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/v2/site-setting:
+    get:
+      tags:
+        - site-setting
+      summary: site-setting
       responses:
         '200':
           description: Successful response

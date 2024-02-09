@@ -1,15 +1,138 @@
 {
 	"info": {
-		"_postman_id": "556f60cf-eece-469e-a4c8-07f4652f7a92",
-		"name": "buspark v2/samiti apis",
+		"_postman_id": "dc0131c9-cd9c-4e1e-aaaa-c0978262ab9a",
+		"name": "BUSPARK Admin/Samiti APIs (v2)",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "15009917",
-		"_collection_link": "https://bikash-projects.postman.co/workspace/Bikash's-Workspace~07b4d747-08b6-4eac-9f94-41a4bad205fa/collection/15009917-556f60cf-eece-469e-a4c8-07f4652f7a92?action=share&source=collection_link&creator=15009917"
+		"_collection_link": "https://bikash-projects.postman.co/workspace/Bikash's-Workspace~07b4d747-08b6-4eac-9f94-41a4bad205fa/collection/15009917-dc0131c9-cd9c-4e1e-aaaa-c0978262ab9a?action=share&source=collection_link&creator=15009917"
 	},
 	"item": [
 		{
-			"name": "user",
+			"name": "Authentication",
 			"item": [
+				{
+					"name": "login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const response = pm.response.json()\r",
+									"pm.environment.set('access_token', response.data.token)\r",
+									"pm.environment.set('refresh_token', response.data.refresh_token)"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "email",
+									"value": "deepaksamiti@gmail.com",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "password",
+									"value": "1234",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "popep97100@klblogs.com",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "password",
+									"value": "P@ssw0rd",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "email",
+									"value": "samiti2@samiti.com",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "email",
+									"value": "bikashxaus@gmail.com",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "email",
+									"value": "admin@admin.com",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "aayushpandey616@gmail.com",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/api/v2/login",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v2",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "logout",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/v2/logout",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v2",
+								"logout"
+							]
+						}
+					},
+					"response": []
+				},
 				{
 					"name": "get profile",
 					"request": {
@@ -26,11 +149,13 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{url}}/user-detail",
+							"raw": "{{url}}/api/v2/user-detail",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
+								"api",
+								"v2",
 								"user-detail"
 							]
 						}
@@ -78,11 +203,13 @@
 							]
 						},
 						"url": {
-							"raw": "{{url}}/user-detail",
+							"raw": "{{url}}/api/v2/user-detail",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
+								"api",
+								"v2",
 								"user-detail"
 							]
 						}
@@ -130,125 +257,14 @@
 							]
 						},
 						"url": {
-							"raw": "{{url}}/password-change",
+							"raw": "{{url}}/api/v2/password-change",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
+								"api",
+								"v2",
 								"password-change"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "login",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"exec": [
-									"const response = pm.response.json()\r",
-									"pm.environment.set('access_token', response.data.token)\r",
-									"pm.environment.set('refresh_token', response.data.refresh_token)"
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"request": {
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "formdata",
-							"formdata": [
-								{
-									"key": "email",
-									"value": "deepaksamiti@gmail.com",
-									"type": "text",
-									"disabled": true
-								},
-								{
-									"key": "password",
-									"value": "1234",
-									"type": "text"
-								},
-								{
-									"key": "email",
-									"value": "popep97100@klblogs.com",
-									"type": "text",
-									"disabled": true
-								},
-								{
-									"key": "password",
-									"value": "P@ssw0rd",
-									"type": "text",
-									"disabled": true
-								},
-								{
-									"key": "email",
-									"value": "samiti1@samiti.com",
-									"type": "text",
-									"disabled": true
-								},
-								{
-									"key": "email",
-									"value": "bikashxaus@gmail.com",
-									"type": "text",
-									"disabled": true
-								},
-								{
-									"key": "email",
-									"value": "admin@admin.com",
-									"type": "text"
-								}
-							]
-						},
-						"url": {
-							"raw": "{{url}}/login",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"login"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "logout",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"exec": [
-									""
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{access_token}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "POST",
-						"header": [],
-						"url": {
-							"raw": "{{url}}/logout",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"logout"
 							]
 						}
 					},
@@ -280,11 +296,13 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "{{url}}/refresh-token/:refresh_token",
+							"raw": "{{url}}/api/v2/refresh-token/:refresh_token",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
+								"api",
+								"v2",
 								"refresh-token",
 								":refresh_token"
 							],
@@ -314,11 +332,13 @@
 							]
 						},
 						"url": {
-							"raw": "{{url}}/reset-password-mail",
+							"raw": "{{url}}/api/v2/reset-password-mail",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
+								"api",
+								"v2",
 								"reset-password-mail"
 							]
 						}
@@ -341,11 +361,13 @@
 							]
 						},
 						"url": {
-							"raw": "{{url}}/reset-password-otp-verification",
+							"raw": "{{url}}/api/v2/reset-password-otp-verification",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
+								"api",
+								"v2",
 								"reset-password-otp-verification"
 							]
 						}
@@ -378,11 +400,13 @@
 							]
 						},
 						"url": {
-							"raw": "{{url}}/reset-password",
+							"raw": "{{url}}/api/v2/reset-password",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
+								"api",
+								"v2",
 								"reset-password"
 							]
 						}
@@ -392,27 +416,68 @@
 			]
 		},
 		{
-			"name": "site-setting",
+			"name": "association",
 			"item": [
 				{
-					"name": "site-setting",
+					"name": "list",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
 						"method": "GET",
-						"header": [
-							{
-								"key": "Accept",
-								"value": "application/json",
-								"type": "text",
-								"disabled": true
-							}
-						],
+						"header": [],
 						"url": {
-							"raw": "{{url}}/site-setting",
+							"raw": "{{url}}/api/v2/association",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
-								"site-setting"
+								"api",
+								"v2",
+								"association"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "single",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/v2/association/:slug",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v2",
+								"association",
+								":slug"
+							],
+							"variable": [
+								{
+									"key": "slug",
+									"value": "madonna-savage"
+								}
 							]
 						}
 					},
@@ -439,19 +504,31 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{url}}/bus",
+							"raw": "{{url}}/api/v2/bus?route_id=27&company_id=1",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
+								"api",
+								"v2",
 								"bus"
+							],
+							"query": [
+								{
+									"key": "route_id",
+									"value": "27"
+								},
+								{
+									"key": "company_id",
+									"value": "1"
+								}
 							]
 						}
 					},
 					"response": []
 				},
 				{
-					"name": "list paginated",
+					"name": "list data",
 					"request": {
 						"auth": {
 							"type": "bearer",
@@ -466,22 +543,45 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{url}}/bus/list/paginated?limit=8&page=1",
+							"raw": "{{url}}/api/v2/bus/list/paginated?paginate=1&page=&limit=&search_keyword=&route_id=27&company_id=1",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
+								"api",
+								"v2",
 								"bus",
 								"list",
 								"paginated"
 							],
 							"query": [
 								{
-									"key": "limit",
-									"value": "8"
+									"key": "paginate",
+									"value": "1"
 								},
 								{
 									"key": "page",
+									"value": ""
+								},
+								{
+									"key": "limit",
+									"value": ""
+								},
+								{
+									"key": "search_keyword",
+									"value": ""
+								},
+								{
+									"key": "status",
+									"value": "",
+									"disabled": true
+								},
+								{
+									"key": "route_id",
+									"value": "27"
+								},
+								{
+									"key": "company_id",
 									"value": "1"
 								}
 							]
@@ -505,11 +605,13 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{url}}/bus/:id",
+							"raw": "{{url}}/api/v2/bus/:id",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
+								"api",
+								"v2",
 								"bus",
 								":id"
 							],
@@ -539,11 +641,13 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{url}}/bus/:id/seats",
+							"raw": "{{url}}/api/v2/bus/:id/seats",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
+								"api",
+								"v2",
 								"bus",
 								":id",
 								"seats"
@@ -561,174 +665,7 @@
 			]
 		},
 		{
-			"name": "location",
-			"item": [
-				{
-					"name": "list",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{access_token}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "{{url}}/location",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"location"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "single",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{access_token}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "{{url}}/location/:id",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"location",
-								":id"
-							],
-							"variable": [
-								{
-									"key": "id",
-									"value": "12"
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "single by slug",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{access_token}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "{{url}}/location/by-slug/:slug",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"location",
-								"by-slug",
-								":slug"
-							],
-							"variable": [
-								{
-									"key": "slug",
-									"value": "finn-wiggins"
-								}
-							]
-						}
-					},
-					"response": []
-				}
-			]
-		},
-		{
-			"name": "route",
-			"item": [
-				{
-					"name": "list",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{access_token}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "{{url}}/route",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"route"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "single",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{access_token}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "{{url}}/route/:id",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"route",
-								":id"
-							],
-							"variable": [
-								{
-									"key": "id",
-									"value": "1"
-								}
-							]
-						}
-					},
-					"response": []
-				}
-			]
-		},
-		{
-			"name": "bus schedule",
+			"name": "bus-schedule",
 			"item": [
 				{
 					"name": "for booking",
@@ -756,11 +693,13 @@
 									}
 								],
 								"url": {
-									"raw": "{{url}}/bus-schedule/search/for-booking?from=1&to=9&date=2080-05-31",
+									"raw": "{{url}}/api/v2/bus-schedule/search/for-booking?from=1&to=9&date=2080-05-31",
 									"host": [
 										"{{url}}"
 									],
 									"path": [
+										"api",
+										"v2",
 										"bus-schedule",
 										"search",
 										"for-booking"
@@ -816,11 +755,13 @@
 									"formdata": []
 								},
 								"url": {
-									"raw": "{{url}}/bus-schedule/:bus_schedule_id/for-booking",
+									"raw": "{{url}}/api/v2/bus-schedule/:bus_schedule_id/for-booking",
 									"host": [
 										"{{url}}"
 									],
 									"path": [
+										"api",
+										"v2",
 										"bus-schedule",
 										":bus_schedule_id",
 										"for-booking"
@@ -853,11 +794,13 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{url}}/bus-schedule",
+							"raw": "{{url}}/api/v2/bus-schedule",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
+								"api",
+								"v2",
 								"bus-schedule"
 							]
 						}
@@ -880,11 +823,13 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{url}}/bus-schedule/:id",
+							"raw": "{{url}}/api/v2/bus-schedule/:id",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
+								"api",
+								"v2",
 								"bus-schedule",
 								":id"
 							],
@@ -914,11 +859,13 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{url}}/bus-schedule/route/:route_id/buses",
+							"raw": "{{url}}/api/v2/bus-schedule/route/:route_id/buses",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
+								"api",
+								"v2",
 								"bus-schedule",
 								"route",
 								":route_id",
@@ -950,11 +897,13 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{url}}/bus-schedule/bus/:bus_id/route",
+							"raw": "{{url}}/api/v2/bus-schedule/bus/:bus_id/route",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
+								"api",
+								"v2",
 								"bus-schedule",
 								"bus",
 								":bus_id",
@@ -986,21 +935,35 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{url}}/bus-schedule-search-by-dates?from_date=2080-04-03&to_date=2080-04-32",
+							"raw": "{{url}}/api/v2/bus-schedule-search-by-dates?paginate=1&perPage=1&currentPage=2&from_date=2080-04-29&to_date=2080-06-29",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
+								"api",
+								"v2",
 								"bus-schedule-search-by-dates"
 							],
 							"query": [
 								{
+									"key": "paginate",
+									"value": "1"
+								},
+								{
+									"key": "perPage",
+									"value": "1"
+								},
+								{
+									"key": "currentPage",
+									"value": "2"
+								},
+								{
 									"key": "from_date",
-									"value": "2080-04-03"
+									"value": "2080-04-29"
 								},
 								{
 									"key": "to_date",
-									"value": "2080-04-32"
+									"value": "2080-06-29"
 								}
 							]
 						}
@@ -1023,11 +986,13 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{url}}/bus-schedule-search?departure_date=2080-08-30&route_id=1",
+							"raw": "{{url}}/api/v2/bus-schedule-search?departure_date=2080-08-30&route_id=1",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
+								"api",
+								"v2",
 								"bus-schedule-search"
 							],
 							"query": [
@@ -1074,13 +1039,14 @@
 								},
 								{
 									"key": "departure_date",
-									"value": "2080-07-21",
+									"value": "2080-11-01",
 									"type": "text"
 								},
 								{
 									"key": "departure_date_ad",
 									"value": "2023-11-07",
-									"type": "text"
+									"type": "text",
+									"disabled": true
 								},
 								{
 									"key": "departure_time",
@@ -1095,11 +1061,13 @@
 							]
 						},
 						"url": {
-							"raw": "{{url}}/bus-schedule",
+							"raw": "{{url}}/api/v2/bus-schedule",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
+								"api",
+								"v2",
 								"bus-schedule"
 							]
 						}
@@ -1123,7 +1091,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"_method\": \"PUT\",\r\n    //route_id:1\r\n    //bus_id:38\r\n    //departure_date:2080-04-03\r\n    //deparute_date_ad:2023-07-19\r\n    \"departure_time\": \"21:00\",\r\n    \"status\": \"Active\",\r\n    \"is_discount_available\": 1,\r\n    \"main_route_discount\": 3,\r\n    \"sub_route_discount\": [\r\n        {\r\n            \"from_id\": \"1\", //can't change\r\n            \"to_id\": \"9\", //can't change\r\n            \"price\": \"12\", //can't change\r\n            \"discount\": \"2\",\r\n            \"status\": \"Active\" //can't change\r\n        },\r\n        {\r\n            \"from_id\": \"8\", //can't change\r\n            \"to_id\": \"9\", //can't change\r\n            \"price\": \"10\", //can't change\r\n            \"discount\": null,\r\n            \"status\": \"Active\" //can't change\r\n        }\r\n    ]\r\n}",
+							"raw": "{\r\n    \"_method\": \"PUT\",\r\n    //route_id:1\r\n    //bus_id:38\r\n    //departure_date:2080-04-03\r\n    //deparute_date_ad:2023-07-19\r\n    \"departure_time\": \"21:00\",\r\n    \"status\": \"Active\",\r\n    \"is_discount_available\": 1,\r\n    \"main_route_discount\": 3,\r\n    \"sub_route_discount\": [\r\n        {\r\n            \"from_id\": 1, //can't change\r\n            \"to_id\": 9, //can't change\r\n            \"price\": 12, //can't change\r\n            \"discount\":2,\r\n            \"status\": \"Active\" //can't change\r\n        },\r\n        {\r\n            \"from_id\": 8, //can't change\r\n            \"to_id\": 9, //can't change\r\n            \"price\": 10, //can't change\r\n            \"discount\": null,\r\n            \"status\": \"Active\" //can't change\r\n        }\r\n    ]\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -1131,11 +1099,13 @@
 							}
 						},
 						"url": {
-							"raw": "{{url}}/bus-schedule/:id",
+							"raw": "{{url}}/api/v2/bus-schedule/:id",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
+								"api",
+								"v2",
 								"bus-schedule",
 								":id"
 							],
@@ -1180,11 +1150,13 @@
 							]
 						},
 						"url": {
-							"raw": "{{url}}/bus-schedule/:id/status-change",
+							"raw": "{{url}}/api/v2/bus-schedule/:id/status-change",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
+								"api",
+								"v2",
 								"bus-schedule",
 								":id",
 								"status-change"
@@ -1230,11 +1202,13 @@
 							]
 						},
 						"url": {
-							"raw": "{{url}}/bus-schedule/:id/booking-status-change",
+							"raw": "{{url}}/api/v2/bus-schedule/:id/booking-status-change",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
+								"api",
+								"v2",
 								"bus-schedule",
 								":id",
 								"booking-status-change"
@@ -1280,11 +1254,13 @@
 							]
 						},
 						"url": {
-							"raw": "{{url}}/bus-schedule/:id/departure-time-change",
+							"raw": "{{url}}/api/v2/bus-schedule/:id/departure-time-change",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
+								"api",
+								"v2",
 								"bus-schedule",
 								":id",
 								"departure-time-change"
@@ -1315,11 +1291,13 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{url}}/bus-schedule/:id/bus-seats",
+							"raw": "{{url}}/api/v2/bus-schedule/:id/bus-seats",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
+								"api",
+								"v2",
 								"bus-schedule",
 								":id",
 								"bus-seats"
@@ -1327,7 +1305,8 @@
 							"variable": [
 								{
 									"key": "id",
-									"value": "153"
+									"value": "87",
+									"description": "170"
 								}
 							]
 						}
@@ -1351,7 +1330,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"seat_id\": [\r\n        \"53\",\r\n        \"41\",\r\n        \"54\",\r\n        \"50\",\r\n        \"46\",\r\n        \"55\"\r\n    ]\r\n}",
+							"raw": "{\r\n    \"seat_id\": [\r\n        53,\r\n        41,\r\n        54,\r\n        50,\r\n        46\r\n    ]\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -1359,11 +1338,13 @@
 							}
 						},
 						"url": {
-							"raw": "{{url}}/bus-schedule/:id/bus-seats/enable-disable",
+							"raw": "{{url}}/api/v2/bus-schedule/:id/bus-seats/enable-disable",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
+								"api",
+								"v2",
 								"bus-schedule",
 								":id",
 								"bus-seats",
@@ -1396,7 +1377,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"seat_id\": [\r\n        \"53\",\r\n        \"41\",\r\n        \"54\"\r\n        // ,\r\n        // \"50\",\r\n        // \"46\",\r\n        // \"55\"\r\n    ],\r\n    \"available_to\": \"Online\"\r\n}",
+							"raw": "{\r\n    \"seat_id\": [\r\n        53,\r\n        41,\r\n        54\r\n    ],\r\n    \"available_to\": \"Online\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -1404,11 +1385,13 @@
 							}
 						},
 						"url": {
-							"raw": "{{url}}/bus-schedule/:id/bus-seats/available-to",
+							"raw": "{{url}}/api/v2/bus-schedule/:id/bus-seats/available-to",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
+								"api",
+								"v2",
 								"bus-schedule",
 								":id",
 								"bus-seats",
@@ -1440,11 +1423,13 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{url}}/bus-schedule/:id/counters",
+							"raw": "{{url}}/api/v2/bus-schedule/:id/counters",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
+								"api",
+								"v2",
 								"bus-schedule",
 								":id",
 								"counters"
@@ -1452,7 +1437,7 @@
 							"variable": [
 								{
 									"key": "id",
-									"value": "120"
+									"value": "170"
 								}
 							]
 						}
@@ -1476,7 +1461,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"seat_id\": [\r\n        // \"53\",\r\n        // \"41\",\r\n        // \"54\",\r\n        // \"50\",\r\n        // \"46\",\r\n        \"55\"\r\n    ],\r\n    \"counter_availability\": 21\r\n}",
+							"raw": "{\r\n    \"seat_id\": [\r\n        49\r\n         ,\r\n        53\r\n        // ,\r\n        // 54,\r\n        // 41\r\n    ],\r\n    \"counter_availability\": 21\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -1484,11 +1469,13 @@
 							}
 						},
 						"url": {
-							"raw": "{{url}}/bus-schedule/:id/bus-seats/counter-assign",
+							"raw": "{{url}}/api/v2/bus-schedule/:id/bus-seats/counter-assign",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
+								"api",
+								"v2",
 								"bus-schedule",
 								":id",
 								"bus-seats",
@@ -1497,7 +1484,7 @@
 							"variable": [
 								{
 									"key": "id",
-									"value": "120"
+									"value": "170"
 								}
 							]
 						}
@@ -1548,11 +1535,13 @@
 							]
 						},
 						"url": {
-							"raw": "{{url}}/bus-schedule/:id/route-bus-facility-type-price",
+							"raw": "{{url}}/api/v2/bus-schedule/:id/route-bus-facility-type-price",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
+								"api",
+								"v2",
 								"bus-schedule",
 								":id",
 								"route-bus-facility-type-price"
@@ -1584,7 +1573,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"_method\": \"PUT\",\r\n    \"is_discount_available\": 1,\r\n    \"main_route_discount\": 3,\r\n    \"sub_route_discount\": [\r\n        {\r\n            \"from_id\": \"1\", //can't change\r\n            \"to_id\": \"9\", //can't change\r\n            \"price\": \"12\", //can't change\r\n            \"discount\": \"2\",\r\n            \"status\": \"Active\" //can't change\r\n        },\r\n        {\r\n            \"from_id\": \"8\", //can't change\r\n            \"to_id\": \"9\", //can't change\r\n            \"price\": \"10\", //can't change\r\n            \"discount\": \"4\",\r\n            \"status\": \"Active\" //can't change\r\n        }\r\n    ]\r\n}",
+							"raw": "{\r\n    \"_method\": \"PUT\",\r\n    \"is_discount_available\": 1,\r\n    \"main_route_discount\": 3,\r\n    \"sub_route_discount\": [\r\n        {\r\n            \"from_id\": 1, //can't change\r\n            \"to_id\": 9, //can't change\r\n            \"price\": 12, //can't change\r\n            \"discount\": 2,\r\n            \"status\": \"Active\" //can't change\r\n        },\r\n        {\r\n            \"from_id\": 8, //can't change\r\n            \"to_id\": 9, //can't change\r\n            \"price\": 10, //can't change\r\n            \"discount\": 4,\r\n            \"status\": \"Active\" //can't change\r\n        }\r\n    ]\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -1592,11 +1581,13 @@
 							}
 						},
 						"url": {
-							"raw": "{{url}}/bus-schedule/sub-route-discount/:id",
+							"raw": "{{url}}/api/v2/bus-schedule/sub-route-discount/:id",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
+								"api",
+								"v2",
 								"bus-schedule",
 								"sub-route-discount",
 								":id"
@@ -1644,11 +1635,13 @@
 							}
 						},
 						"url": {
-							"raw": "{{url}}/bus-booking/pre-booking?from=1&to=2&schedule_id=153&date=2080-08-30&seat_id[]=43&seat_id[]=54",
+							"raw": "{{url}}/api/v2/bus-booking/pre-booking?from=1&to=2&schedule_id=170&date=2080-10-29&seat_id[]=41&seat_id[]=42",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
+								"api",
+								"v2",
 								"bus-booking",
 								"pre-booking"
 							],
@@ -1663,20 +1656,20 @@
 								},
 								{
 									"key": "schedule_id",
-									"value": "153"
+									"value": "170"
 								},
 								{
 									"key": "date",
-									"value": "2080-08-30"
+									"value": "2080-10-29"
 								},
 								{
 									"key": "seat_id[]",
-									"value": "43",
-									"description": "seat_id is array where seat_id = [\"53\", \"54\"]"
+									"value": "41",
+									"description": "seat_id is array where seat_id = [53,54]"
 								},
 								{
 									"key": "seat_id[]",
-									"value": "54"
+									"value": "42"
 								}
 							]
 						}
@@ -1700,7 +1693,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"schedule_id\": 117,\r\n    \"seat_id\": [\r\n        \"50\",\r\n        \"55\"\r\n    ]\r\n}",
+							"raw": "{\r\n    \"schedule_id\": 170,\r\n    \"seat_id\": [\r\n        41,\r\n        42\r\n    ]\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -1708,11 +1701,13 @@
 							}
 						},
 						"url": {
-							"raw": "{{url}}/bus-booking/pre-booking-timeout",
+							"raw": "{{url}}/api/v2/bus-booking/pre-booking-timeout",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
+								"api",
+								"v2",
 								"bus-booking",
 								"pre-booking-timeout"
 							]
@@ -1737,7 +1732,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"schedule_id\": 153,\n    \"route_id\": 1,\n    \"pickup_location\": \"X-place\",\n    \"drop_location\": \"X-place\",\n    \"rate\": 12,\n    // \"qty\": 2,\n    \"discount\": \"1\",\n    // \"t_price\": 30,\n    // \"total\": 30,\n    \"paid\": 15,\n    // \"due\": \"\",\n    // \"return\": \"\",\n    \"contact_phone\": \"98xxxxxxxx\",\n    \"contact_name\": \"X-man Mu\",\n    // \"bus_details\": \"\",\n    \"seat_id\": [\n        \"43\"\n        ,\n        \"54\"\n    ]\n    // \"payment_status\": \"pending\",\n    // \"status\": \"OnBooking\",\n    ,\n    \"sub_route_price\":\n    // \"\"\n    // [\n        {\n            \"from_id\": 1,\n            \"to_id\": 9,\n            \"sub_route_from\": \"KTM\",\n            \"sub_route_to\": \"Kohalpur\",\n            \"price\": \"12\",\n            \"discount\": \"2\"\n        }\n    // ]\n}",
+							"raw": "{\n    \"schedule_id\": 153,\n    \"route_id\": 1,\n    \"pickup_location\": \"X-place\",\n    \"drop_location\": \"X-place\",\n    \"rate\": 12,\n    // \"qty\": 2,\n    \"discount\": 1,\n    // \"t_price\": 30,\n    // \"total\": 30,\n    \"paid\": 15,\n    // \"due\": \"\",\n    // \"return\": \"\",\n    \"contact_phone\": \"98xxxxxxxx\",\n    \"contact_name\": \"X-man Mu\",\n    // \"bus_details\": \"\",\n    \"seat_id\": [\n        43\n        ,\n        54\n    ]\n    // \"payment_status\": \"pending\",\n    // \"status\": \"OnBooking\",\n    ,\n    \"sub_route_price\":\n    // \"\"\n    // [\n        {\n            \"from_id\": 1,\n            \"to_id\": 9,\n            \"sub_route_from\": \"KTM\",\n            \"sub_route_to\": \"Kohalpur\",\n            \"price\": 12,\n            \"discount\": 2\n        }\n    // ]\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -1745,11 +1740,13 @@
 							}
 						},
 						"url": {
-							"raw": "{{url}}/bus-booking/store",
+							"raw": "{{url}}/api/v2/bus-booking/store",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
+								"api",
+								"v2",
 								"bus-booking",
 								"store"
 							]
@@ -1782,11 +1779,13 @@
 							}
 						},
 						"url": {
-							"raw": "{{url}}/bus-booking/:id/update-detail",
+							"raw": "{{url}}/api/v2/bus-booking/:id/update-detail",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
+								"api",
+								"v2",
 								"bus-booking",
 								":id",
 								"update-detail"
@@ -1818,7 +1817,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"_method\": \"PUT\",\n    \"new_booked_seat_id\": [\n        \"55\"\n    ],\n    \"old_booked_seat_id\": [\n        \n    ]\n}",
+							"raw": "{\n    \"_method\": \"PUT\",\n    \"new_booked_seat_id\": [\n        55\n    ],\n    \"old_booked_seat_id\": [\n        \n    ]\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -1826,11 +1825,13 @@
 							}
 						},
 						"url": {
-							"raw": "{{url}}/bus-booking/:id/update-booked-seat",
+							"raw": "{{url}}/api/v2/bus-booking/:id/update-booked-seat",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
+								"api",
+								"v2",
 								"bus-booking",
 								":id",
 								"update-booked-seat"
@@ -1861,11 +1862,13 @@
 						"method": "POST",
 						"header": [],
 						"url": {
-							"raw": "{{url}}/bus-booking/:id/cancel",
+							"raw": "{{url}}/api/v2/bus-booking/:id/cancel",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
+								"api",
+								"v2",
 								"bus-booking",
 								":id",
 								"cancel"
@@ -1897,7 +1900,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"new_booked_seat_id\": [\r\n        \"48\"\r\n    ] //seats_to_remain\r\n}",
+							"raw": "{\r\n    \"new_booked_seat_id\": [\r\n        48\r\n    ] //seats_to_remain\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -1905,11 +1908,13 @@
 							}
 						},
 						"url": {
-							"raw": "{{url}}/bus-booking/:id/seat-cancel",
+							"raw": "{{url}}/api/v2/bus-booking/:id/seat-cancel",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
+								"api",
+								"v2",
 								"bus-booking",
 								":id",
 								"seat-cancel"
@@ -1947,11 +1952,13 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "{{url}}/bus-booking/users-my-booking/users-from-role?role_id=3",
+							"raw": "{{url}}/api/v2/bus-booking/users-my-booking/users-from-role?role_id=3",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
+								"api",
+								"v2",
 								"bus-booking",
 								"users-my-booking",
 								"users-from-role"
@@ -1989,11 +1996,13 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "{{url}}/bus-booking/users-my-booking/users",
+							"raw": "{{url}}/api/v2/bus-booking/users-my-booking/users",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
+								"api",
+								"v2",
 								"bus-booking",
 								"users-my-booking",
 								"users"
@@ -2025,11 +2034,13 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "{{url}}/bus-booking/users-my-booking?from_date=2080-01-31&to_date=2080-08-31",
+							"raw": "{{url}}/api/v2/bus-booking/users-my-booking?from_date=2080-01-31&to_date=2080-08-31",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
+								"api",
+								"v2",
 								"bus-booking",
 								"users-my-booking"
 							],
@@ -2082,11 +2093,13 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "{{url}}/bus-booking-search?bus_schedule_id=153",
+							"raw": "{{url}}/api/v2/bus-booking-search?bus_schedule_id=153",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
+								"api",
+								"v2",
 								"bus-booking-search"
 							],
 							"query": [
@@ -2132,11 +2145,13 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "{{url}}/bus-booking-cancelled-search?bus_schedule_id=117",
+							"raw": "{{url}}/api/v2/bus-booking-cancelled-search?bus_schedule_id=117",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
+								"api",
+								"v2",
 								"bus-booking-cancelled-search"
 							],
 							"query": [
@@ -2182,11 +2197,13 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "{{url}}/bus-booking/:id",
+							"raw": "{{url}}/api/v2/bus-booking/:id",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
+								"api",
+								"v2",
 								"bus-booking",
 								":id"
 							],
@@ -2194,155 +2211,6 @@
 								{
 									"key": "id",
 									"value": "687"
-								}
-							]
-						}
-					},
-					"response": []
-				}
-			]
-		},
-		{
-			"name": "role",
-			"item": [
-				{
-					"name": "list",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{access_token}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "{{url}}/role",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"role"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "single",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{access_token}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "{{url}}/role/:id",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"role",
-								":id"
-							],
-							"variable": [
-								{
-									"key": "id",
-									"value": "3"
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "role - users",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{access_token}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "{{url}}/role/:id/users",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"role",
-								":id",
-								"users"
-							],
-							"variable": [
-								{
-									"key": "id",
-									"value": "3"
-								}
-							]
-						}
-					},
-					"response": []
-				}
-			]
-		},
-		{
-			"name": "departure list",
-			"item": [
-				{
-					"name": "list",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{access_token}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "{{url}}/departure-list-search?departure_date=2080-04-32",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"departure-list-search"
-							],
-							"query": [
-								{
-									"key": "departure_date",
-									"value": "2080-04-32"
-								},
-								{
-									"key": "association_id",
-									"value": "",
-									"disabled": true
-								},
-								{
-									"key": "company_id",
-									"value": "",
-									"disabled": true
 								}
 							]
 						}
@@ -2370,11 +2238,13 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{url}}/chalani-list-search?departure_date=2080-04-32&bus_id=29",
+							"raw": "{{url}}/api/v2/chalani-list-search?departure_date=2080-04-32&bus_id=29",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
+								"api",
+								"v2",
 								"chalani-list-search"
 							],
 							"query": [
@@ -2385,171 +2255,6 @@
 								{
 									"key": "bus_id",
 									"value": "29"
-								}
-							]
-						}
-					},
-					"response": []
-				}
-			]
-		},
-		{
-			"name": "sales report",
-			"item": [
-				{
-					"name": "list counter online",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{access_token}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "{{url}}/sales-report-list-counter-online?from_date=2080-04-17&to_date=2080-08-30",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"sales-report-list-counter-online"
-							],
-							"query": [
-								{
-									"key": "from_date",
-									"value": "2080-04-17"
-								},
-								{
-									"key": "to_date",
-									"value": "2080-08-30"
-								},
-								{
-									"key": "from_date_ad",
-									"value": "2023-08-02",
-									"disabled": true
-								},
-								{
-									"key": "to_date_ad",
-									"value": "2023-08-02",
-									"disabled": true
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "list all user",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{access_token}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "{{url}}/sales-report-list-all-user?from_date=2080-04-17&to_date=2080-08-30",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"sales-report-list-all-user"
-							],
-							"query": [
-								{
-									"key": "from_date",
-									"value": "2080-04-17"
-								},
-								{
-									"key": "to_date",
-									"value": "2080-08-30"
-								},
-								{
-									"key": "from_date_ad",
-									"value": "2023-08-02",
-									"disabled": true
-								},
-								{
-									"key": "to_date_ad",
-									"value": "2023-08-02",
-									"disabled": true
-								}
-							]
-						}
-					},
-					"response": []
-				}
-			]
-		},
-		{
-			"name": "association",
-			"item": [
-				{
-					"name": "list",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{access_token}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "{{url}}/association",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"association"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "single",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{access_token}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "{{url}}/association/:slug",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"association",
-								":slug"
-							],
-							"variable": [
-								{
-									"key": "slug",
-									"value": "madonna-savage"
 								}
 							]
 						}
@@ -2577,11 +2282,13 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{url}}/company",
+							"raw": "{{url}}/api/v2/company",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
+								"api",
+								"v2",
 								"company"
 							]
 						}
@@ -2604,11 +2311,13 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{url}}/company/:slug",
+							"raw": "{{url}}/api/v2/company/:slug",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
+								"api",
+								"v2",
 								"company",
 								":slug"
 							],
@@ -2663,12 +2372,482 @@
 							]
 						},
 						"url": {
-							"raw": "{{url}}/contact-us",
+							"raw": "{{url}}/api/v2/contact-us",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
+								"api",
+								"v2",
 								"contact-us"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "departure list",
+			"item": [
+				{
+					"name": "list",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/v2/departure-list-search?departure_date=2080-04-32",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v2",
+								"departure-list-search"
+							],
+							"query": [
+								{
+									"key": "departure_date",
+									"value": "2080-04-32"
+								},
+								{
+									"key": "association_id",
+									"value": "",
+									"disabled": true
+								},
+								{
+									"key": "company_id",
+									"value": "",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "location",
+			"item": [
+				{
+					"name": "list",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/v2/location",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v2",
+								"location"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "single",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/v2/location/:id",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v2",
+								"location",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "12"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "single by slug",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/v2/location/by-slug/:slug",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v2",
+								"location",
+								"by-slug",
+								":slug"
+							],
+							"variable": [
+								{
+									"key": "slug",
+									"value": "finn-wiggins"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "role",
+			"item": [
+				{
+					"name": "list",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/v2/role",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v2",
+								"role"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "single",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/v2/role/:id",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v2",
+								"role",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "3"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "role - users",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/v2/role/:id/users",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v2",
+								"role",
+								":id",
+								"users"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "3"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "route",
+			"item": [
+				{
+					"name": "list",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/v2/route",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v2",
+								"route"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "single",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/v2/route/:id",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v2",
+								"route",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "sales report",
+			"item": [
+				{
+					"name": "list counter online",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/v2/sales-report-list-counter-online?from_date=2080-04-17&to_date=2080-08-30",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v2",
+								"sales-report-list-counter-online"
+							],
+							"query": [
+								{
+									"key": "from_date",
+									"value": "2080-04-17"
+								},
+								{
+									"key": "to_date",
+									"value": "2080-08-30"
+								},
+								{
+									"key": "from_date_ad",
+									"value": "2023-08-02",
+									"disabled": true
+								},
+								{
+									"key": "to_date_ad",
+									"value": "2023-08-02",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "list all user",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/v2/sales-report-list-all-user?from_date=2080-04-17&to_date=2080-08-30",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v2",
+								"sales-report-list-all-user"
+							],
+							"query": [
+								{
+									"key": "from_date",
+									"value": "2080-04-17"
+								},
+								{
+									"key": "to_date",
+									"value": "2080-08-30"
+								},
+								{
+									"key": "from_date_ad",
+									"value": "2023-08-02",
+									"disabled": true
+								},
+								{
+									"key": "to_date_ad",
+									"value": "2023-08-02",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "site-setting",
+			"item": [
+				{
+					"name": "site-setting",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "{{url}}/api/v2/site-setting",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v2",
+								"site-setting"
 							]
 						}
 					},
