@@ -975,11 +975,10 @@ paths:
             schema:
               type: object
               example:
-                schedule_id: 153
+                schedule_id: 170
                 route_id: 1
                 pickup_location: X-place
                 drop_location: X-place
-                rate: 12
                 discount: 1
                 paid: 15
                 contact_phone: 98xxxxxxxx
