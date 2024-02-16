@@ -56,9 +56,8 @@
 								},
 								{
 									"key": "email",
-									"value": "samiti2@samiti.com",
-									"type": "text",
-									"disabled": true
+									"value": "samiti1@samiti.com",
+									"type": "text"
 								},
 								{
 									"key": "email",
@@ -69,7 +68,8 @@
 								{
 									"key": "email",
 									"value": "admin@admin.com",
-									"type": "text"
+									"type": "text",
+									"disabled": true
 								},
 								{
 									"key": "email",
@@ -434,7 +434,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{url}}/api/v2/association",
+							"raw": "{{url}}/api/v2/association?paginate=1&limit=5&page=1&search_keyword=&status=Enabled&highlight=",
 							"host": [
 								"{{url}}"
 							],
@@ -442,6 +442,56 @@
 								"api",
 								"v2",
 								"association"
+							],
+							"query": [
+								{
+									"key": "paginate",
+									"value": "1",
+									"description": "1||0"
+								},
+								{
+									"key": "limit",
+									"value": "5"
+								},
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "search_keyword",
+									"value": "",
+									"description": "||name"
+								},
+								{
+									"key": "status",
+									"value": "Enabled",
+									"description": "||Enabled,Disabled"
+								},
+								{
+									"key": "highlight",
+									"value": "",
+									"description": "1||0"
+								},
+								{
+									"key": "perPage",
+									"value": "",
+									"disabled": true
+								},
+								{
+									"key": "currentPage",
+									"value": "",
+									"disabled": true
+								},
+								{
+									"key": "columns",
+									"value": "",
+									"disabled": true
+								},
+								{
+									"key": "pageName",
+									"value": "",
+									"disabled": true
+								}
 							]
 						}
 					},
@@ -504,7 +554,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{url}}/api/v2/bus?route_id=27&company_id=1",
+							"raw": "{{url}}/api/v2/bus?paginate=1&limit=5&page=1&status=Enabled&search_keyword&route_id=&company_id=",
 							"host": [
 								"{{url}}"
 							],
@@ -515,74 +565,35 @@
 							],
 							"query": [
 								{
-									"key": "route_id",
-									"value": "27"
-								},
-								{
-									"key": "company_id",
-									"value": "1"
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "list data",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{access_token}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "{{url}}/api/v2/bus/list/paginated?paginate=1&page=&limit=&search_keyword=&route_id=27&company_id=1",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"api",
-								"v2",
-								"bus",
-								"list",
-								"paginated"
-							],
-							"query": [
-								{
 									"key": "paginate",
-									"value": "1"
-								},
-								{
-									"key": "page",
-									"value": ""
+									"value": "1",
+									"description": "1||0"
 								},
 								{
 									"key": "limit",
-									"value": ""
+									"value": "5"
 								},
 								{
-									"key": "search_keyword",
-									"value": ""
+									"key": "page",
+									"value": "1"
 								},
 								{
 									"key": "status",
-									"value": "",
-									"disabled": true
+									"value": "Enabled",
+									"description": "||Enabled,Disabled"
+								},
+								{
+									"key": "search_keyword",
+									"value": null,
+									"description": "||code,from_location_id,to_location_id"
 								},
 								{
 									"key": "route_id",
-									"value": "27"
+									"value": ""
 								},
 								{
 									"key": "company_id",
-									"value": "1"
+									"value": ""
 								}
 							]
 						}
@@ -693,7 +704,7 @@
 									}
 								],
 								"url": {
-									"raw": "{{url}}/api/v2/bus-schedule/search/for-booking?from=1&to=9&date=2080-05-31",
+									"raw": "{{url}}/api/v2/bus-schedule/search/for-booking?paginate=1&limit=5&page=1&to=9&from=1&date=2080-11-30&shift=",
 									"host": [
 										"{{url}}"
 									],
@@ -706,26 +717,36 @@
 									],
 									"query": [
 										{
-											"key": "from",
+											"key": "paginate",
+											"value": "1"
+										},
+										{
+											"key": "limit",
+											"value": "5"
+										},
+										{
+											"key": "page",
 											"value": "1"
 										},
 										{
 											"key": "to",
-											"value": "9"
+											"value": "9",
+											"description": "||to_location_id"
 										},
 										{
-											"key": "shift",
-											"value": "night",
-											"disabled": true
+											"key": "from",
+											"value": "1",
+											"description": "||from_location_id"
 										},
 										{
 											"key": "date",
-											"value": "2080-05-31"
+											"value": "2080-11-30",
+											"description": "||departure_date"
 										},
 										{
-											"key": "to",
-											"value": "9",
-											"disabled": true
+											"key": "shift",
+											"value": "",
+											"description": "||null,all,day,night"
 										}
 									]
 								}
@@ -794,7 +815,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{url}}/api/v2/bus-schedule",
+							"raw": "{{url}}/api/v2/bus-schedule?paginate=1&limit=5&page=1&status=&booking_status=",
 							"host": [
 								"{{url}}"
 							],
@@ -802,6 +823,210 @@
 								"api",
 								"v2",
 								"bus-schedule"
+							],
+							"query": [
+								{
+									"key": "paginate",
+									"value": "1"
+								},
+								{
+									"key": "limit",
+									"value": "5"
+								},
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "status",
+									"value": "",
+									"description": "||Active,Inactive"
+								},
+								{
+									"key": "booking_status",
+									"value": "",
+									"description": "||Open,Close"
+								},
+								{
+									"key": "from",
+									"value": "1",
+									"description": "||from_location_id",
+									"disabled": true
+								},
+								{
+									"key": "to",
+									"value": "9",
+									"description": "||to_location_id",
+									"disabled": true
+								},
+								{
+									"key": "shift",
+									"value": "",
+									"description": "||null,all,day,night",
+									"disabled": true
+								},
+								{
+									"key": "date",
+									"value": "2080-11-30",
+									"description": "||departure_date",
+									"disabled": true
+								},
+								{
+									"key": "departure_date",
+									"value": "2080-11-30",
+									"description": "||departure_date",
+									"disabled": true
+								},
+								{
+									"key": "route_id",
+									"value": "",
+									"description": "||route_id",
+									"disabled": true
+								},
+								{
+									"key": "from_date",
+									"value": "2080-11-01",
+									"description": "||departure_date",
+									"disabled": true
+								},
+								{
+									"key": "to_date",
+									"value": "2080-11-30",
+									"description": "||departure_date",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "list search by dates",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/v2/bus-schedule-search-by-dates?paginate=1&limit=5&page=1&status=&booking_status=&from_date=2080-04-29&to_date=2080-06-29",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v2",
+								"bus-schedule-search-by-dates"
+							],
+							"query": [
+								{
+									"key": "perPage",
+									"value": "1",
+									"disabled": true
+								},
+								{
+									"key": "currentPage",
+									"value": "",
+									"disabled": true
+								},
+								{
+									"key": "paginate",
+									"value": "1"
+								},
+								{
+									"key": "limit",
+									"value": "5"
+								},
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "status",
+									"value": "",
+									"description": "||Active,Inactive"
+								},
+								{
+									"key": "booking_status",
+									"value": "",
+									"description": "||Open,Close"
+								},
+								{
+									"key": "from_date",
+									"value": "2080-04-29"
+								},
+								{
+									"key": "to_date",
+									"value": "2080-06-29"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "list by departure date and route",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/v2/bus-schedule-search?paginate=1&limit=5&page=1&status=&booking_status=&departure_date=2080-08-30&route_id=1",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v2",
+								"bus-schedule-search"
+							],
+							"query": [
+								{
+									"key": "paginate",
+									"value": "1"
+								},
+								{
+									"key": "limit",
+									"value": "5"
+								},
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "status",
+									"value": "",
+									"description": "||Active,Inactive"
+								},
+								{
+									"key": "booking_status",
+									"value": "",
+									"description": "||Open,Close"
+								},
+								{
+									"key": "departure_date",
+									"value": "2080-08-30"
+								},
+								{
+									"key": "route_id",
+									"value": "1"
+								}
 							]
 						}
 					},
@@ -913,96 +1138,6 @@
 								{
 									"key": "bus_id",
 									"value": "38"
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "list search by dates",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{access_token}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "{{url}}/api/v2/bus-schedule-search-by-dates?paginate=1&perPage=1&currentPage=2&from_date=2080-04-29&to_date=2080-06-29",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"api",
-								"v2",
-								"bus-schedule-search-by-dates"
-							],
-							"query": [
-								{
-									"key": "paginate",
-									"value": "1"
-								},
-								{
-									"key": "perPage",
-									"value": "1"
-								},
-								{
-									"key": "currentPage",
-									"value": "2"
-								},
-								{
-									"key": "from_date",
-									"value": "2080-04-29"
-								},
-								{
-									"key": "to_date",
-									"value": "2080-06-29"
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "list by departure date and route",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{access_token}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "{{url}}/api/v2/bus-schedule-search?departure_date=2080-08-30&route_id=1",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"api",
-								"v2",
-								"bus-schedule-search"
-							],
-							"query": [
-								{
-									"key": "departure_date",
-									"value": "2080-08-30"
-								},
-								{
-									"key": "route_id",
-									"value": "1"
 								}
 							]
 						}
@@ -1305,7 +1440,7 @@
 							"variable": [
 								{
 									"key": "id",
-									"value": "87",
+									"value": "177",
 									"description": "170"
 								}
 							]
@@ -1549,7 +1684,7 @@
 							"variable": [
 								{
 									"key": "id",
-									"value": "127"
+									"value": "177"
 								}
 							]
 						}
@@ -1605,6 +1740,66 @@
 			]
 		},
 		{
+			"name": "departure list",
+			"item": [
+				{
+					"name": "list",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/v2/departure-list-search?paginate=1&limit=5&page=1&departure_date=2080-10-29&association_id=&company_id=",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v2",
+								"departure-list-search"
+							],
+							"query": [
+								{
+									"key": "paginate",
+									"value": "1"
+								},
+								{
+									"key": "limit",
+									"value": "5"
+								},
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "departure_date",
+									"value": "2080-10-29"
+								},
+								{
+									"key": "association_id",
+									"value": ""
+								},
+								{
+									"key": "company_id",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
 			"name": "bus booking",
 			"item": [
 				{
@@ -1635,7 +1830,7 @@
 							}
 						},
 						"url": {
-							"raw": "{{url}}/api/v2/bus-booking/pre-booking?from=1&to=2&schedule_id=170&date=2080-10-29&seat_id[]=41&seat_id[]=42",
+							"raw": "{{url}}/api/v2/bus-booking/pre-booking?from=1&to=2&schedule_id=177&date=2080-11-30&seat_id[]=41&seat_id[]=42",
 							"host": [
 								"{{url}}"
 							],
@@ -1656,11 +1851,11 @@
 								},
 								{
 									"key": "schedule_id",
-									"value": "170"
+									"value": "177"
 								},
 								{
 									"key": "date",
-									"value": "2080-10-29"
+									"value": "2080-11-30"
 								},
 								{
 									"key": "seat_id[]",
@@ -1930,7 +2125,7 @@
 					"response": []
 				},
 				{
-					"name": "Users/my booking users from role",
+					"name": "Users/My booking - users",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
@@ -1952,51 +2147,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "{{url}}/api/v2/bus-booking/users-my-booking/users-from-role?role_id=3",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"api",
-								"v2",
-								"bus-booking",
-								"users-my-booking",
-								"users-from-role"
-							],
-							"query": [
-								{
-									"key": "role_id",
-									"value": "3"
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Users/my booking - users",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{access_token}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "GET",
-						"header": [],
-						"body": {
-							"mode": "formdata",
-							"formdata": []
-						},
-						"url": {
-							"raw": "{{url}}/api/v2/bus-booking/users-my-booking/users",
+							"raw": "{{url}}/api/v2/bus-booking/users-my-booking/users?role_id=",
 							"host": [
 								"{{url}}"
 							],
@@ -2006,13 +2157,19 @@
 								"bus-booking",
 								"users-my-booking",
 								"users"
+							],
+							"query": [
+								{
+									"key": "role_id",
+									"value": ""
+								}
 							]
 						}
 					},
 					"response": []
 				},
 				{
-					"name": "Users/my booking history",
+					"name": "Users/My booking - history",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
@@ -2034,7 +2191,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "{{url}}/api/v2/bus-booking/users-my-booking?from_date=2080-01-31&to_date=2080-08-31",
+							"raw": "{{url}}/api/v2/bus-booking/users-my-booking?paginate=1&limit=5&page=1&from_date=2080-01-31&to_date=2080-12-01&user_id=&role_id=&route_id=",
 							"host": [
 								"{{url}}"
 							],
@@ -2046,24 +2203,38 @@
 							],
 							"query": [
 								{
+									"key": "paginate",
+									"value": "1"
+								},
+								{
+									"key": "limit",
+									"value": "5"
+								},
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
 									"key": "from_date",
 									"value": "2080-01-31",
 									"description": "Departure Date From"
 								},
 								{
 									"key": "to_date",
-									"value": "2080-08-31",
+									"value": "2080-12-01",
 									"description": "Departure Date To"
 								},
 								{
 									"key": "user_id",
-									"value": "80",
-									"disabled": true
+									"value": ""
 								},
 								{
 									"key": "role_id",
-									"value": "3",
-									"disabled": true
+									"value": ""
+								},
+								{
+									"key": "route_id",
+									"value": ""
 								}
 							]
 						}
@@ -2071,7 +2242,7 @@
 					"response": []
 				},
 				{
-					"name": "list by bus-schedule",
+					"name": "list",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
@@ -2093,7 +2264,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "{{url}}/api/v2/bus-booking-search?bus_schedule_id=153",
+							"raw": "{{url}}/api/v2/bus-booking-search?paginate=1&limit=5&page=1&from_date=&to_date&bus_schedule_id=153",
 							"host": [
 								"{{url}}"
 							],
@@ -2104,18 +2275,31 @@
 							],
 							"query": [
 								{
+									"key": "paginate",
+									"value": "1"
+								},
+								{
+									"key": "limit",
+									"value": "5"
+								},
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
 									"key": "from_date",
-									"value": "2080-04-31",
-									"disabled": true
+									"value": "",
+									"description": "||departure_date from"
 								},
 								{
 									"key": "to_date",
-									"value": "2080-04-32",
-									"disabled": true
+									"value": null,
+									"description": "||departure_date to"
 								},
 								{
 									"key": "bus_schedule_id",
-									"value": "153"
+									"value": "153",
+									"description": "||Bus Schedule ID"
 								}
 							]
 						}
@@ -2123,7 +2307,7 @@
 					"response": []
 				},
 				{
-					"name": "list Cancelled by bus-schedule",
+					"name": "list cancelled",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
@@ -2145,7 +2329,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "{{url}}/api/v2/bus-booking-cancelled-search?bus_schedule_id=117",
+							"raw": "{{url}}/api/v2/bus-booking-cancelled-search?paginate=1&limit=5&page=1&from_date=&to_date=&bus_schedule_id=153",
 							"host": [
 								"{{url}}"
 							],
@@ -2156,18 +2340,28 @@
 							],
 							"query": [
 								{
+									"key": "paginate",
+									"value": "1"
+								},
+								{
+									"key": "limit",
+									"value": "5"
+								},
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
 									"key": "from_date",
-									"value": "2080-04-31",
-									"disabled": true
+									"value": ""
 								},
 								{
 									"key": "to_date",
-									"value": "2080-04-32",
-									"disabled": true
+									"value": ""
 								},
 								{
 									"key": "bus_schedule_id",
-									"value": "117"
+									"value": "153"
 								}
 							]
 						}
@@ -2238,7 +2432,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{url}}/api/v2/chalani-list-search?departure_date=2080-04-32&bus_id=29",
+							"raw": "{{url}}/api/v2/chalani-list-search?departure_date=2080-10-29&bus_id=38",
 							"host": [
 								"{{url}}"
 							],
@@ -2249,12 +2443,27 @@
 							],
 							"query": [
 								{
+									"key": "paginate",
+									"value": "1",
+									"disabled": true
+								},
+								{
+									"key": "limit",
+									"value": "5",
+									"disabled": true
+								},
+								{
+									"key": "page",
+									"value": "1",
+									"disabled": true
+								},
+								{
 									"key": "departure_date",
-									"value": "2080-04-32"
+									"value": "2080-10-29"
 								},
 								{
 									"key": "bus_id",
-									"value": "29"
+									"value": "38"
 								}
 							]
 						}
@@ -2282,7 +2491,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{url}}/api/v2/company",
+							"raw": "{{url}}/api/v2/company?paginate=1&limit=5&page=1&search_keyword=&status=Enabled",
 							"host": [
 								"{{url}}"
 							],
@@ -2290,6 +2499,31 @@
 								"api",
 								"v2",
 								"company"
+							],
+							"query": [
+								{
+									"key": "paginate",
+									"value": "1",
+									"description": "1||0"
+								},
+								{
+									"key": "limit",
+									"value": "5"
+								},
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "search_keyword",
+									"value": "",
+									"description": "||company_name"
+								},
+								{
+									"key": "status",
+									"value": "Enabled",
+									"description": "||Enabled,Disabled"
+								}
 							]
 						}
 					},
@@ -2388,56 +2622,6 @@
 			]
 		},
 		{
-			"name": "departure list",
-			"item": [
-				{
-					"name": "list",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{access_token}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "{{url}}/api/v2/departure-list-search?departure_date=2080-04-32",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"api",
-								"v2",
-								"departure-list-search"
-							],
-							"query": [
-								{
-									"key": "departure_date",
-									"value": "2080-04-32"
-								},
-								{
-									"key": "association_id",
-									"value": "",
-									"disabled": true
-								},
-								{
-									"key": "company_id",
-									"value": "",
-									"disabled": true
-								}
-							]
-						}
-					},
-					"response": []
-				}
-			]
-		},
-		{
 			"name": "location",
 			"item": [
 				{
@@ -2456,7 +2640,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{url}}/api/v2/location",
+							"raw": "{{url}}/api/v2/location?paginate=1&limit=5&page=1&status=Enabled&search_keyword=",
 							"host": [
 								"{{url}}"
 							],
@@ -2464,6 +2648,31 @@
 								"api",
 								"v2",
 								"location"
+							],
+							"query": [
+								{
+									"key": "paginate",
+									"value": "1",
+									"description": "1||0"
+								},
+								{
+									"key": "limit",
+									"value": "5"
+								},
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "status",
+									"value": "Enabled",
+									"description": "||Enabled,Disabled"
+								},
+								{
+									"key": "search_keyword",
+									"value": "",
+									"description": "||city"
+								}
 							]
 						}
 					},
@@ -2563,7 +2772,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{url}}/api/v2/role",
+							"raw": "{{url}}/api/v2/role?paginate=1&limit=5&page=1&search_keyword=",
 							"host": [
 								"{{url}}"
 							],
@@ -2571,6 +2780,26 @@
 								"api",
 								"v2",
 								"role"
+							],
+							"query": [
+								{
+									"key": "paginate",
+									"value": "1",
+									"description": "1||0"
+								},
+								{
+									"key": "limit",
+									"value": "5"
+								},
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "search_keyword",
+									"value": "",
+									"description": "||name"
+								}
 							]
 						}
 					},
@@ -2628,7 +2857,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{url}}/api/v2/role/:id/users",
+							"raw": "{{url}}/api/v2/role/:id/users?paginate=1&limit=5&page=1&status=&search_keyword=",
 							"host": [
 								"{{url}}"
 							],
@@ -2638,6 +2867,29 @@
 								"role",
 								":id",
 								"users"
+							],
+							"query": [
+								{
+									"key": "paginate",
+									"value": "1"
+								},
+								{
+									"key": "limit",
+									"value": "5"
+								},
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "status",
+									"value": "",
+									"description": "||Enabled,Disabled"
+								},
+								{
+									"key": "search_keyword",
+									"value": ""
+								}
 							],
 							"variable": [
 								{
@@ -2670,7 +2922,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{url}}/api/v2/route",
+							"raw": "{{url}}/api/v2/route?paginate=1&limit=5&page=1&status=Enabled&search_keyword=",
 							"host": [
 								"{{url}}"
 							],
@@ -2678,6 +2930,31 @@
 								"api",
 								"v2",
 								"route"
+							],
+							"query": [
+								{
+									"key": "paginate",
+									"value": "1",
+									"description": "1||0"
+								},
+								{
+									"key": "limit",
+									"value": "5"
+								},
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "status",
+									"value": "Enabled",
+									"description": "||Enabled,Disabled"
+								},
+								{
+									"key": "search_keyword",
+									"value": "",
+									"description": "||code,from_location_id,to_location_id"
+								}
 							]
 						}
 					},
@@ -2751,22 +3028,27 @@
 							],
 							"query": [
 								{
+									"key": "paginate",
+									"value": "1",
+									"disabled": true
+								},
+								{
+									"key": "limit",
+									"value": "5",
+									"disabled": true
+								},
+								{
+									"key": "page",
+									"value": "1",
+									"disabled": true
+								},
+								{
 									"key": "from_date",
 									"value": "2080-04-17"
 								},
 								{
 									"key": "to_date",
 									"value": "2080-08-30"
-								},
-								{
-									"key": "from_date_ad",
-									"value": "2023-08-02",
-									"disabled": true
-								},
-								{
-									"key": "to_date_ad",
-									"value": "2023-08-02",
-									"disabled": true
 								}
 							]
 						}
@@ -2800,22 +3082,27 @@
 							],
 							"query": [
 								{
+									"key": "paginate",
+									"value": "1",
+									"disabled": true
+								},
+								{
+									"key": "limit",
+									"value": "5",
+									"disabled": true
+								},
+								{
+									"key": "page",
+									"value": "1",
+									"disabled": true
+								},
+								{
 									"key": "from_date",
 									"value": "2080-04-17"
 								},
 								{
 									"key": "to_date",
 									"value": "2080-08-30"
-								},
-								{
-									"key": "from_date_ad",
-									"value": "2023-08-02",
-									"disabled": true
-								},
-								{
-									"key": "to_date_ad",
-									"value": "2023-08-02",
-									"disabled": true
 								}
 							]
 						}

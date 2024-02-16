@@ -34,11 +34,11 @@ tags:
   - name: bus
   - name: bus-schedule
   - name: bus-schedule > for booking
+  - name: departure list
   - name: bus booking
   - name: chalani
   - name: company
   - name: contact-us
-  - name: departure list
   - name: location
   - name: role
   - name: route
@@ -246,6 +246,39 @@ paths:
       summary: list
       security:
         - bearerAuth: []
+      parameters:
+        - name: paginate
+          in: query
+          schema:
+            type: integer
+          description: 1||0
+          example: '1'
+        - name: limit
+          in: query
+          schema:
+            type: integer
+          example: '5'
+        - name: page
+          in: query
+          schema:
+            type: integer
+          example: '1'
+        - name: search_keyword
+          in: query
+          schema:
+            type: string
+          description: '||name'
+        - name: status
+          in: query
+          schema:
+            type: string
+          description: '||Enabled,Disabled'
+          example: Enabled
+        - name: highlight
+          in: query
+          schema:
+            type: string
+          description: 1||0
       responses:
         '200':
           description: Successful response
@@ -278,56 +311,41 @@ paths:
       security:
         - bearerAuth: []
       parameters:
-        - name: route_id
-          in: query
-          schema:
-            type: integer
-          example: '27'
-        - name: company_id
-          in: query
-          schema:
-            type: integer
-          example: '1'
-      responses:
-        '200':
-          description: Successful response
-          content:
-            application/json: {}
-  /api/v2/bus/list/paginated:
-    get:
-      tags:
-        - bus
-      summary: list data
-      security:
-        - bearerAuth: []
-      parameters:
         - name: paginate
           in: query
           schema:
             type: integer
+          description: 1||0
           example: '1'
-        - name: page
-          in: query
-          schema:
-            type: string
         - name: limit
           in: query
           schema:
+            type: integer
+          example: '5'
+        - name: page
+          in: query
+          schema:
+            type: integer
+          example: '1'
+        - name: status
+          in: query
+          schema:
             type: string
+          description: '||Enabled,Disabled'
+          example: Enabled
         - name: search_keyword
           in: query
           schema:
             type: string
+          description: '||code,from_location_id,to_location_id'
         - name: route_id
           in: query
           schema:
-            type: integer
-          example: '27'
+            type: string
         - name: company_id
           in: query
           schema:
-            type: integer
-          example: '1'
+            type: string
       responses:
         '200':
           description: Successful response
@@ -379,7 +397,17 @@ paths:
       security:
         - bearerAuth: []
       parameters:
-        - name: from
+        - name: paginate
+          in: query
+          schema:
+            type: integer
+          example: '1'
+        - name: limit
+          in: query
+          schema:
+            type: integer
+          example: '5'
+        - name: page
           in: query
           schema:
             type: integer
@@ -388,12 +416,25 @@ paths:
           in: query
           schema:
             type: integer
+          description: '||to_location_id'
           example: '9'
+        - name: from
+          in: query
+          schema:
+            type: integer
+          description: '||from_location_id'
+          example: '1'
         - name: date
           in: query
           schema:
             type: string
-          example: '2080-05-31'
+          description: '||departure_date'
+          example: '2080-11-30'
+        - name: shift
+          in: query
+          schema:
+            type: string
+          description: '||null,all,day,night'
       responses:
         '200':
           description: Successful response
@@ -425,6 +466,32 @@ paths:
       summary: list
       security:
         - bearerAuth: []
+      parameters:
+        - name: paginate
+          in: query
+          schema:
+            type: integer
+          example: '1'
+        - name: limit
+          in: query
+          schema:
+            type: integer
+          example: '5'
+        - name: page
+          in: query
+          schema:
+            type: integer
+          example: '1'
+        - name: status
+          in: query
+          schema:
+            type: string
+          description: '||Active,Inactive'
+        - name: booking_status
+          in: query
+          schema:
+            type: string
+          description: '||Open,Close'
       responses:
         '200':
           description: Successful response
@@ -460,6 +527,102 @@ paths:
                   example: Active
       security:
         - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/v2/bus-schedule-search-by-dates:
+    get:
+      tags:
+        - bus-schedule
+      summary: list search by dates
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: paginate
+          in: query
+          schema:
+            type: integer
+          example: '1'
+        - name: limit
+          in: query
+          schema:
+            type: integer
+          example: '5'
+        - name: page
+          in: query
+          schema:
+            type: integer
+          example: '1'
+        - name: status
+          in: query
+          schema:
+            type: string
+          description: '||Active,Inactive'
+        - name: booking_status
+          in: query
+          schema:
+            type: string
+          description: '||Open,Close'
+        - name: from_date
+          in: query
+          schema:
+            type: string
+          example: '2080-04-29'
+        - name: to_date
+          in: query
+          schema:
+            type: string
+          example: '2080-06-29'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/v2/bus-schedule-search:
+    get:
+      tags:
+        - bus-schedule
+      summary: list by departure date and route
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: paginate
+          in: query
+          schema:
+            type: integer
+          example: '1'
+        - name: limit
+          in: query
+          schema:
+            type: integer
+          example: '5'
+        - name: page
+          in: query
+          schema:
+            type: integer
+          example: '1'
+        - name: status
+          in: query
+          schema:
+            type: string
+          description: '||Active,Inactive'
+        - name: booking_status
+          in: query
+          schema:
+            type: string
+          description: '||Open,Close'
+        - name: departure_date
+          in: query
+          schema:
+            type: string
+          example: '2080-08-30'
+        - name: route_id
+          in: query
+          schema:
+            type: integer
+          example: '1'
       responses:
         '200':
           description: Successful response
@@ -557,67 +720,6 @@ paths:
             type: integer
           required: true
           example: '38'
-      responses:
-        '200':
-          description: Successful response
-          content:
-            application/json: {}
-  /api/v2/bus-schedule-search-by-dates:
-    get:
-      tags:
-        - bus-schedule
-      summary: list search by dates
-      security:
-        - bearerAuth: []
-      parameters:
-        - name: paginate
-          in: query
-          schema:
-            type: integer
-          example: '1'
-        - name: perPage
-          in: query
-          schema:
-            type: integer
-          example: '1'
-        - name: currentPage
-          in: query
-          schema:
-            type: integer
-          example: '2'
-        - name: from_date
-          in: query
-          schema:
-            type: string
-          example: '2080-04-29'
-        - name: to_date
-          in: query
-          schema:
-            type: string
-          example: '2080-06-29'
-      responses:
-        '200':
-          description: Successful response
-          content:
-            application/json: {}
-  /api/v2/bus-schedule-search:
-    get:
-      tags:
-        - bus-schedule
-      summary: list by departure date and route
-      security:
-        - bearerAuth: []
-      parameters:
-        - name: departure_date
-          in: query
-          schema:
-            type: string
-          example: '2080-08-30'
-        - name: route_id
-          in: query
-          schema:
-            type: integer
-          example: '1'
       responses:
         '200':
           description: Successful response
@@ -730,7 +832,7 @@ paths:
             type: integer
           required: true
           description: '170'
-          example: '87'
+          example: '177'
       responses:
         '200':
           description: Successful response
@@ -858,7 +960,7 @@ paths:
           schema:
             type: integer
           required: true
-          example: '127'
+          example: '177'
       responses:
         '200':
           description: Successful response
@@ -903,6 +1005,47 @@ paths:
           description: Successful response
           content:
             application/json: {}
+  /api/v2/departure-list-search:
+    get:
+      tags:
+        - departure list
+      summary: list
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: paginate
+          in: query
+          schema:
+            type: integer
+          example: '1'
+        - name: limit
+          in: query
+          schema:
+            type: integer
+          example: '5'
+        - name: page
+          in: query
+          schema:
+            type: integer
+          example: '1'
+        - name: departure_date
+          in: query
+          schema:
+            type: string
+          example: '2080-10-29'
+        - name: association_id
+          in: query
+          schema:
+            type: string
+        - name: company_id
+          in: query
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
   /api/v2/bus-booking/pre-booking:
     get:
       tags:
@@ -925,12 +1068,12 @@ paths:
           in: query
           schema:
             type: integer
-          example: '170'
+          example: '177'
         - name: date
           in: query
           schema:
             type: string
-          example: '2080-10-29'
+          example: '2080-11-30'
         - name: seat_id[]
           in: query
           schema:
@@ -1107,31 +1250,18 @@ paths:
           description: Successful response
           content:
             application/json: {}
-  /api/v2/bus-booking/users-my-booking/users-from-role:
+  /api/v2/bus-booking/users-my-booking/users:
     get:
       tags:
         - bus booking
-      summary: Users/my booking users from role
+      summary: Users/My booking - users
       security:
         - bearerAuth: []
       parameters:
         - name: role_id
           in: query
           schema:
-            type: integer
-          example: '3'
-      responses:
-        '200':
-          description: Successful response
-          content:
-            application/json: {}
-  /api/v2/bus-booking/users-my-booking/users:
-    get:
-      tags:
-        - bus booking
-      summary: Users/my booking - users
-      security:
-        - bearerAuth: []
+            type: string
       responses:
         '200':
           description: Successful response
@@ -1141,10 +1271,25 @@ paths:
     get:
       tags:
         - bus booking
-      summary: Users/my booking history
+      summary: Users/My booking - history
       security:
         - bearerAuth: []
       parameters:
+        - name: paginate
+          in: query
+          schema:
+            type: integer
+          example: '1'
+        - name: limit
+          in: query
+          schema:
+            type: integer
+          example: '5'
+        - name: page
+          in: query
+          schema:
+            type: integer
+          example: '1'
         - name: from_date
           in: query
           schema:
@@ -1156,7 +1301,19 @@ paths:
           schema:
             type: string
           description: Departure Date To
-          example: '2080-08-31'
+          example: '2080-12-01'
+        - name: user_id
+          in: query
+          schema:
+            type: string
+        - name: role_id
+          in: query
+          schema:
+            type: string
+        - name: route_id
+          in: query
+          schema:
+            type: string
       responses:
         '200':
           description: Successful response
@@ -1166,14 +1323,40 @@ paths:
     get:
       tags:
         - bus booking
-      summary: list by bus-schedule
+      summary: list
       security:
         - bearerAuth: []
       parameters:
+        - name: paginate
+          in: query
+          schema:
+            type: integer
+          example: '1'
+        - name: limit
+          in: query
+          schema:
+            type: integer
+          example: '5'
+        - name: page
+          in: query
+          schema:
+            type: integer
+          example: '1'
+        - name: from_date
+          in: query
+          schema:
+            type: string
+          description: '||departure_date from'
+        - name: to_date
+          in: query
+          schema:
+            type: string
+          description: '||departure_date to'
         - name: bus_schedule_id
           in: query
           schema:
             type: integer
+          description: '||Bus Schedule ID'
           example: '153'
       responses:
         '200':
@@ -1184,15 +1367,38 @@ paths:
     get:
       tags:
         - bus booking
-      summary: list Cancelled by bus-schedule
+      summary: list cancelled
       security:
         - bearerAuth: []
       parameters:
+        - name: paginate
+          in: query
+          schema:
+            type: integer
+          example: '1'
+        - name: limit
+          in: query
+          schema:
+            type: integer
+          example: '5'
+        - name: page
+          in: query
+          schema:
+            type: integer
+          example: '1'
+        - name: from_date
+          in: query
+          schema:
+            type: string
+        - name: to_date
+          in: query
+          schema:
+            type: string
         - name: bus_schedule_id
           in: query
           schema:
             type: integer
-          example: '117'
+          example: '153'
       responses:
         '200':
           description: Successful response
@@ -1229,12 +1435,12 @@ paths:
           in: query
           schema:
             type: string
-          example: '2080-04-32'
+          example: '2080-10-29'
         - name: bus_id
           in: query
           schema:
             type: integer
-          example: '29'
+          example: '38'
       responses:
         '200':
           description: Successful response
@@ -1247,6 +1453,34 @@ paths:
       summary: list
       security:
         - bearerAuth: []
+      parameters:
+        - name: paginate
+          in: query
+          schema:
+            type: integer
+          description: 1||0
+          example: '1'
+        - name: limit
+          in: query
+          schema:
+            type: integer
+          example: '5'
+        - name: page
+          in: query
+          schema:
+            type: integer
+          example: '1'
+        - name: search_keyword
+          in: query
+          schema:
+            type: string
+          description: '||company_name'
+        - name: status
+          in: query
+          schema:
+            type: string
+          description: '||Enabled,Disabled'
+          example: Enabled
       responses:
         '200':
           description: Successful response
@@ -1302,24 +1536,6 @@ paths:
           description: Successful response
           content:
             application/json: {}
-  /api/v2/departure-list-search:
-    get:
-      tags:
-        - departure list
-      summary: list
-      security:
-        - bearerAuth: []
-      parameters:
-        - name: departure_date
-          in: query
-          schema:
-            type: string
-          example: '2080-04-32'
-      responses:
-        '200':
-          description: Successful response
-          content:
-            application/json: {}
   /api/v2/location:
     get:
       tags:
@@ -1327,6 +1543,34 @@ paths:
       summary: list
       security:
         - bearerAuth: []
+      parameters:
+        - name: paginate
+          in: query
+          schema:
+            type: integer
+          description: 1||0
+          example: '1'
+        - name: limit
+          in: query
+          schema:
+            type: integer
+          example: '5'
+        - name: page
+          in: query
+          schema:
+            type: integer
+          example: '1'
+        - name: status
+          in: query
+          schema:
+            type: string
+          description: '||Enabled,Disabled'
+          example: Enabled
+        - name: search_keyword
+          in: query
+          schema:
+            type: string
+          description: '||city'
       responses:
         '200':
           description: Successful response
@@ -1377,6 +1621,28 @@ paths:
       summary: list
       security:
         - bearerAuth: []
+      parameters:
+        - name: paginate
+          in: query
+          schema:
+            type: integer
+          description: 1||0
+          example: '1'
+        - name: limit
+          in: query
+          schema:
+            type: integer
+          example: '5'
+        - name: page
+          in: query
+          schema:
+            type: integer
+          example: '1'
+        - name: search_keyword
+          in: query
+          schema:
+            type: string
+          description: '||name'
       responses:
         '200':
           description: Successful response
@@ -1409,6 +1675,30 @@ paths:
       security:
         - bearerAuth: []
       parameters:
+        - name: paginate
+          in: query
+          schema:
+            type: integer
+          example: '1'
+        - name: limit
+          in: query
+          schema:
+            type: integer
+          example: '5'
+        - name: page
+          in: query
+          schema:
+            type: integer
+          example: '1'
+        - name: status
+          in: query
+          schema:
+            type: string
+          description: '||Enabled,Disabled'
+        - name: search_keyword
+          in: query
+          schema:
+            type: string
         - name: id
           in: path
           schema:
@@ -1427,6 +1717,34 @@ paths:
       summary: list
       security:
         - bearerAuth: []
+      parameters:
+        - name: paginate
+          in: query
+          schema:
+            type: integer
+          description: 1||0
+          example: '1'
+        - name: limit
+          in: query
+          schema:
+            type: integer
+          example: '5'
+        - name: page
+          in: query
+          schema:
+            type: integer
+          example: '1'
+        - name: status
+          in: query
+          schema:
+            type: string
+          description: '||Enabled,Disabled'
+          example: Enabled
+        - name: search_keyword
+          in: query
+          schema:
+            type: string
+          description: '||code,from_location_id,to_location_id'
       responses:
         '200':
           description: Successful response
