@@ -38,11 +38,6 @@
 									"disabled": true
 								},
 								{
-									"key": "password",
-									"value": "1234",
-									"type": "text"
-								},
-								{
 									"key": "email",
 									"value": "popep97100@klblogs.com",
 									"type": "text",
@@ -53,11 +48,6 @@
 									"value": "P@ssw0rd",
 									"type": "text",
 									"disabled": true
-								},
-								{
-									"key": "email",
-									"value": "samiti1@samiti.com",
-									"type": "text"
 								},
 								{
 									"key": "email",
@@ -76,6 +66,16 @@
 									"value": "aayushpandey616@gmail.com",
 									"type": "text",
 									"disabled": true
+								},
+								{
+									"key": "email",
+									"value": "samiti1@samiti.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "1234",
+									"type": "text"
 								}
 							]
 						},
@@ -134,7 +134,53 @@
 					"response": []
 				},
 				{
-					"name": "get profile",
+					"name": "refresh token",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const response = pm.response.json()\r",
+									"pm.environment.set('access_token', response.data.access_token)\r",
+									"pm.environment.set('refresh_token', response.data.refresh_token)"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{url}}/api/v2/refresh-token/:refresh_token",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v2",
+								"refresh-token",
+								":refresh_token"
+							],
+							"variable": [
+								{
+									"key": "refresh_token",
+									"value": "{{refresh_token}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "user detail",
 					"request": {
 						"auth": {
 							"type": "bearer",
@@ -163,7 +209,7 @@
 					"response": []
 				},
 				{
-					"name": "update profile",
+					"name": "user detail update",
 					"request": {
 						"auth": {
 							"type": "bearer",
@@ -217,7 +263,7 @@
 					"response": []
 				},
 				{
-					"name": "change password",
+					"name": "password change",
 					"request": {
 						"auth": {
 							"type": "bearer",
@@ -271,52 +317,6 @@
 					"response": []
 				},
 				{
-					"name": "refresh token",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"exec": [
-									"const response = pm.response.json()\r",
-									"pm.environment.set('access_token', response.data.access_token)\r",
-									"pm.environment.set('refresh_token', response.data.refresh_token)"
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"request": {
-						"auth": {
-							"type": "noauth"
-						},
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "formdata",
-							"formdata": []
-						},
-						"url": {
-							"raw": "{{url}}/api/v2/refresh-token/:refresh_token",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"api",
-								"v2",
-								"refresh-token",
-								":refresh_token"
-							],
-							"variable": [
-								{
-									"key": "refresh_token",
-									"value": "{{refresh_token}}"
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
 					"name": "reset password mail",
 					"request": {
 						"method": "POST",
@@ -346,6 +346,35 @@
 					"response": []
 				},
 				{
+					"name": "reset password mail otp",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "email",
+									"value": "bikashxaus@gmail.com",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/api/v2/reset-password-mail-otp",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v2",
+								"reset-password-mail-otp"
+							]
+						}
+					},
+					"response": []
+				},
+				{
 					"name": "reset password otp verification",
 					"request": {
 						"method": "POST",
@@ -354,8 +383,13 @@
 							"mode": "formdata",
 							"formdata": [
 								{
-									"key": "otp",
-									"value": "kGbD",
+									"key": "token",
+									"value": "1234",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "",
 									"type": "text"
 								}
 							]
@@ -396,6 +430,12 @@
 									"key": "token",
 									"value": "kGbD",
 									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "",
+									"type": "text",
+									"disabled": true
 								}
 							]
 						},
@@ -408,6 +448,35 @@
 								"api",
 								"v2",
 								"reset-password"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete user",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/v2/delete-user",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v2",
+								"delete-user"
 							]
 						}
 					},
@@ -1740,7 +1809,7 @@
 			]
 		},
 		{
-			"name": "departure list",
+			"name": "bus schedule - departure list",
 			"item": [
 				{
 					"name": "list",

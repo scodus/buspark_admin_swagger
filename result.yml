@@ -34,7 +34,7 @@ tags:
   - name: bus
   - name: bus-schedule
   - name: bus-schedule > for booking
-  - name: departure list
+  - name: bus schedule - departure list
   - name: bus booking
   - name: chalani
   - name: company
@@ -58,10 +58,10 @@ paths:
               properties:
                 email:
                   type: string
-                  example: aayushpandey616@gmail.com
+                  example: samiti1@samiti.com
                 password:
-                  type: string
-                  example: P@ssw0rd
+                  type: integer
+                  example: '1234'
       responses:
         '200':
           description: Successful response
@@ -74,77 +74,6 @@ paths:
       summary: logout
       requestBody:
         content: {}
-      security:
-        - bearerAuth: []
-      responses:
-        '200':
-          description: Successful response
-          content:
-            application/json: {}
-  /api/v2/user-detail:
-    get:
-      tags:
-        - Authentication
-      summary: get profile
-      security:
-        - bearerAuth: []
-      responses:
-        '200':
-          description: Successful response
-          content:
-            application/json: {}
-    post:
-      tags:
-        - Authentication
-      summary: update profile
-      requestBody:
-        content:
-          multipart/form-data:
-            schema:
-              type: object
-              properties:
-                first_name:
-                  type: string
-                  example: samiti
-                last_name:
-                  type: integer
-                  example: '1'
-                image:
-                  type: string
-                  format: binary
-                _method:
-                  type: string
-                  example: PUT
-      security:
-        - bearerAuth: []
-      responses:
-        '200':
-          description: Successful response
-          content:
-            application/json: {}
-  /api/v2/password-change:
-    post:
-      tags:
-        - Authentication
-      summary: change password
-      requestBody:
-        content:
-          multipart/form-data:
-            schema:
-              type: object
-              properties:
-                old_password:
-                  type: integer
-                  example: '1234'
-                new_password:
-                  type: integer
-                  example: '12345'
-                new_password_confirmation:
-                  type: integer
-                  example: '12345'
-                _method:
-                  type: string
-                  example: PUT
       security:
         - bearerAuth: []
       responses:
@@ -176,11 +105,101 @@ paths:
           description: Successful response
           content:
             application/json: {}
+  /api/v2/user-detail:
+    get:
+      tags:
+        - Authentication
+      summary: user detail
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    post:
+      tags:
+        - Authentication
+      summary: user detail update
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                first_name:
+                  type: string
+                  example: samiti
+                last_name:
+                  type: integer
+                  example: '1'
+                image:
+                  type: string
+                  format: binary
+                _method:
+                  type: string
+                  example: PUT
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/v2/password-change:
+    post:
+      tags:
+        - Authentication
+      summary: password change
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                old_password:
+                  type: integer
+                  example: '1234'
+                new_password:
+                  type: integer
+                  example: '12345'
+                new_password_confirmation:
+                  type: integer
+                  example: '12345'
+                _method:
+                  type: string
+                  example: PUT
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
   /api/v2/reset-password-mail:
     post:
       tags:
         - Authentication
       summary: reset password mail
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                  example: bikashxaus@gmail.com
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/v2/reset-password-mail-otp:
+    post:
+      tags:
+        - Authentication
+      summary: reset password mail otp
       requestBody:
         content:
           multipart/form-data:
@@ -206,9 +225,11 @@ paths:
             schema:
               type: object
               properties:
-                otp:
+                token:
+                  type: integer
+                  example: '1234'
+                email:
                   type: string
-                  example: kGbD
       responses:
         '200':
           description: Successful response
@@ -234,6 +255,20 @@ paths:
                 token:
                   type: string
                   example: kGbD
+                email:
+                  type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /api/v2/delete-user:
+    delete:
+      tags:
+        - Authentication
+      summary: delete user
+      security:
+        - bearerAuth: []
       responses:
         '200':
           description: Successful response
@@ -1008,7 +1043,7 @@ paths:
   /api/v2/departure-list-search:
     get:
       tags:
-        - departure list
+        - bus schedule - departure list
       summary: list
       security:
         - bearerAuth: []
