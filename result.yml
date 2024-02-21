@@ -18,7 +18,11 @@ info:
 servers:
   - url: https://buspark.scodus.com
     description: Base URL
+  - url: http://buspark.scodus.com
+    description: Base URL
   - url: https://ticketing.madani.com.np
+    description: Base URL
+  - url: http://ticketing.madani.com.np
     description: Base URL
 components:
   securitySchemes:
