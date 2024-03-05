@@ -46,8 +46,7 @@
 								{
 									"key": "password",
 									"value": "P@ssw0rd",
-									"type": "text",
-									"disabled": true
+									"type": "text"
 								},
 								{
 									"key": "email",
@@ -74,8 +73,27 @@
 								},
 								{
 									"key": "password",
+									"value": "P@ssw0rd",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "email",
+									"value": "samiti1@gmail.com",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "email",
+									"value": "counter1@counter.com",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "password",
 									"value": "1234",
-									"type": "text"
+									"type": "text",
+									"disabled": true
 								}
 							]
 						},
@@ -501,7 +519,14 @@
 							]
 						},
 						"method": "GET",
-						"header": [],
+						"header": [
+							{
+								"key": "association-id",
+								"value": "59",
+								"description": "nullable",
+								"type": "text"
+							}
+						],
 						"url": {
 							"raw": "{{url}}/api/v2/association?paginate=1&limit=5&page=1&search_keyword=&status=Enabled&highlight=",
 							"host": [
@@ -580,7 +605,14 @@
 							]
 						},
 						"method": "GET",
-						"header": [],
+						"header": [
+							{
+								"key": "association-id",
+								"value": "",
+								"description": "nullable",
+								"type": "text"
+							}
+						],
 						"url": {
 							"raw": "{{url}}/api/v2/association/:slug",
 							"host": [
@@ -595,7 +627,7 @@
 							"variable": [
 								{
 									"key": "slug",
-									"value": "madonna-savage"
+									"value": "sundar-bihani-yatayat-pvt-ltd"
 								}
 							]
 						}
@@ -621,7 +653,14 @@
 							]
 						},
 						"method": "GET",
-						"header": [],
+						"header": [
+							{
+								"key": "association-id",
+								"value": "18",
+								"description": "nullable",
+								"type": "text"
+							}
+						],
 						"url": {
 							"raw": "{{url}}/api/v2/bus?paginate=1&limit=5&page=1&status=Enabled&search_keyword&route_id=&company_id=",
 							"host": [
@@ -770,10 +809,15 @@
 										"value": "application/json",
 										"type": "text",
 										"disabled": true
+									},
+									{
+										"key": "association-id",
+										"value": "18",
+										"type": "text"
 									}
 								],
 								"url": {
-									"raw": "{{url}}/api/v2/bus-schedule/search/for-booking?paginate=1&limit=5&page=1&to=9&from=1&date=2080-11-30&shift=",
+									"raw": "{{url}}/api/v2/bus-schedule/search/for-booking?paginate=1&limit=5&page=1&from=1&to=12&date=2080-11-30&shift=",
 									"host": [
 										"{{url}}"
 									],
@@ -798,14 +842,14 @@
 											"value": "1"
 										},
 										{
-											"key": "to",
-											"value": "9",
-											"description": "||to_location_id"
-										},
-										{
 											"key": "from",
 											"value": "1",
 											"description": "||from_location_id"
+										},
+										{
+											"key": "to",
+											"value": "12",
+											"description": "||to_location_id"
 										},
 										{
 											"key": "date",
@@ -882,7 +926,13 @@
 							]
 						},
 						"method": "GET",
-						"header": [],
+						"header": [
+							{
+								"key": "association-id",
+								"value": "59",
+								"type": "text"
+							}
+						],
 						"url": {
 							"raw": "{{url}}/api/v2/bus-schedule?paginate=1&limit=5&page=1&status=&booking_status=",
 							"host": [
@@ -970,77 +1020,6 @@
 					"response": []
 				},
 				{
-					"name": "list search by dates",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "{{access_token}}",
-									"type": "string"
-								}
-							]
-						},
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "{{url}}/api/v2/bus-schedule-search-by-dates?paginate=1&limit=5&page=1&status=&booking_status=&from_date=2080-04-29&to_date=2080-06-29",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"api",
-								"v2",
-								"bus-schedule-search-by-dates"
-							],
-							"query": [
-								{
-									"key": "perPage",
-									"value": "1",
-									"disabled": true
-								},
-								{
-									"key": "currentPage",
-									"value": "",
-									"disabled": true
-								},
-								{
-									"key": "paginate",
-									"value": "1"
-								},
-								{
-									"key": "limit",
-									"value": "5"
-								},
-								{
-									"key": "page",
-									"value": "1"
-								},
-								{
-									"key": "status",
-									"value": "",
-									"description": "||Active,Inactive"
-								},
-								{
-									"key": "booking_status",
-									"value": "",
-									"description": "||Open,Close"
-								},
-								{
-									"key": "from_date",
-									"value": "2080-04-29"
-								},
-								{
-									"key": "to_date",
-									"value": "2080-06-29"
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
 					"name": "list by departure date and route",
 					"request": {
 						"auth": {
@@ -1054,7 +1033,13 @@
 							]
 						},
 						"method": "GET",
-						"header": [],
+						"header": [
+							{
+								"key": "association-id",
+								"value": "18",
+								"type": "text"
+							}
+						],
 						"url": {
 							"raw": "{{url}}/api/v2/bus-schedule-search?paginate=1&limit=5&page=1&status=&booking_status=&departure_date=2080-08-30&route_id=1",
 							"host": [
@@ -1095,6 +1080,73 @@
 								{
 									"key": "route_id",
 									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "list search by dates",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "association-id",
+								"value": "59",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/api/v2/bus-schedule-search-by-dates?paginate=1&limit=5&page=1&from_date=2080-04-29&to_date=2080-12-29",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v2",
+								"bus-schedule-search-by-dates"
+							],
+							"query": [
+								{
+									"key": "perPage",
+									"value": "1",
+									"disabled": true
+								},
+								{
+									"key": "currentPage",
+									"value": "",
+									"disabled": true
+								},
+								{
+									"key": "paginate",
+									"value": "1"
+								},
+								{
+									"key": "limit",
+									"value": "5"
+								},
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "from_date",
+									"value": "2080-04-29"
+								},
+								{
+									"key": "to_date",
+									"value": "2080-12-29"
 								}
 							]
 						}
@@ -1151,7 +1203,13 @@
 							]
 						},
 						"method": "GET",
-						"header": [],
+						"header": [
+							{
+								"key": "association-id",
+								"value": "18",
+								"type": "text"
+							}
+						],
 						"url": {
 							"raw": "{{url}}/api/v2/bus-schedule/route/:route_id/buses",
 							"host": [
@@ -1189,7 +1247,13 @@
 							]
 						},
 						"method": "GET",
-						"header": [],
+						"header": [
+							{
+								"key": "association-id",
+								"value": "",
+								"type": "text"
+							}
+						],
 						"url": {
 							"raw": "{{url}}/api/v2/bus-schedule/bus/:bus_id/route",
 							"host": [
@@ -1206,7 +1270,7 @@
 							"variable": [
 								{
 									"key": "bus_id",
-									"value": "38"
+									"value": "22"
 								}
 							]
 						}
@@ -1625,9 +1689,15 @@
 							]
 						},
 						"method": "GET",
-						"header": [],
+						"header": [
+							{
+								"key": "association-id",
+								"value": "59",
+								"type": "text"
+							}
+						],
 						"url": {
-							"raw": "{{url}}/api/v2/bus-schedule/:id/counters",
+							"raw": "{{url}}/api/v2/bus-schedule/:id/counters?paginate=1&limit=5&page=1",
 							"host": [
 								"{{url}}"
 							],
@@ -1638,10 +1708,25 @@
 								":id",
 								"counters"
 							],
+							"query": [
+								{
+									"key": "paginate",
+									"value": "1"
+								},
+								{
+									"key": "limit",
+									"value": "5"
+								},
+								{
+									"key": "page",
+									"value": "1"
+								}
+							],
 							"variable": [
 								{
 									"key": "id",
-									"value": "170"
+									"value": "77",
+									"description": "89"
 								}
 							]
 						}
@@ -1825,9 +1910,15 @@
 							]
 						},
 						"method": "GET",
-						"header": [],
+						"header": [
+							{
+								"key": "association-id",
+								"value": "8",
+								"type": "text"
+							}
+						],
 						"url": {
-							"raw": "{{url}}/api/v2/departure-list-search?paginate=1&limit=5&page=1&departure_date=2080-10-29&association_id=&company_id=",
+							"raw": "{{url}}/api/v2/departure-list-search?paginate=1&limit=5&page=1&departure_date=2080-11-30&association_id=&company_id=",
 							"host": [
 								"{{url}}"
 							],
@@ -1851,7 +1942,7 @@
 								},
 								{
 									"key": "departure_date",
-									"value": "2080-10-29"
+									"value": "2080-11-30"
 								},
 								{
 									"key": "association_id",
@@ -1899,7 +1990,7 @@
 							}
 						},
 						"url": {
-							"raw": "{{url}}/api/v2/bus-booking/pre-booking?from=1&to=2&schedule_id=177&date=2080-11-30&seat_id[]=41&seat_id[]=42",
+							"raw": "{{url}}/api/v2/bus-booking/pre-booking?from=1&to=2&schedule_id=107&date=2080-11-30&seat_id[]=41&seat_id[]=42",
 							"host": [
 								"{{url}}"
 							],
@@ -1920,7 +2011,7 @@
 								},
 								{
 									"key": "schedule_id",
-									"value": "177"
+									"value": "107"
 								},
 								{
 									"key": "date",
@@ -2254,7 +2345,13 @@
 							]
 						},
 						"method": "GET",
-						"header": [],
+						"header": [
+							{
+								"key": "association-id",
+								"value": "8",
+								"type": "text"
+							}
+						],
 						"body": {
 							"mode": "formdata",
 							"formdata": []
@@ -2327,13 +2424,95 @@
 							]
 						},
 						"method": "GET",
-						"header": [],
+						"header": [
+							{
+								"key": "association-id",
+								"value": "",
+								"type": "text"
+							}
+						],
 						"body": {
 							"mode": "formdata",
 							"formdata": []
 						},
 						"url": {
-							"raw": "{{url}}/api/v2/bus-booking-search?paginate=1&limit=5&page=1&from_date=&to_date&bus_schedule_id=153",
+							"raw": "{{url}}/api/v2/bus-booking?paginate=1&limit=5&page=1&from_date=&to_date&bus_schedule_id=&status",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v2",
+								"bus-booking"
+							],
+							"query": [
+								{
+									"key": "paginate",
+									"value": "1"
+								},
+								{
+									"key": "limit",
+									"value": "5"
+								},
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "from_date",
+									"value": "",
+									"description": "||departure_date from"
+								},
+								{
+									"key": "to_date",
+									"value": null,
+									"description": "||departure_date to"
+								},
+								{
+									"key": "bus_schedule_id",
+									"value": "",
+									"description": "||Bus Schedule ID"
+								},
+								{
+									"key": "status",
+									"value": null,
+									"description": "||Confirmed|Cancelled"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "list confirmed",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "association-id",
+								"value": "",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{url}}/api/v2/bus-booking-search?paginate=1&limit=5&page=1&from_date=&to_date&bus_schedule_id=89",
 							"host": [
 								"{{url}}"
 							],
@@ -2367,7 +2546,7 @@
 								},
 								{
 									"key": "bus_schedule_id",
-									"value": "153",
+									"value": "89",
 									"description": "||Bus Schedule ID"
 								}
 							]
@@ -2392,13 +2571,19 @@
 							]
 						},
 						"method": "GET",
-						"header": [],
+						"header": [
+							{
+								"key": "association-id",
+								"value": "8",
+								"type": "text"
+							}
+						],
 						"body": {
 							"mode": "formdata",
 							"formdata": []
 						},
 						"url": {
-							"raw": "{{url}}/api/v2/bus-booking-cancelled-search?paginate=1&limit=5&page=1&from_date=&to_date=&bus_schedule_id=153",
+							"raw": "{{url}}/api/v2/bus-booking-cancelled-search?paginate=1&limit=5&page=1&from_date=&to_date=&bus_schedule_id=89",
 							"host": [
 								"{{url}}"
 							],
@@ -2430,7 +2615,7 @@
 								},
 								{
 									"key": "bus_schedule_id",
-									"value": "153"
+									"value": "89"
 								}
 							]
 						}
@@ -2499,9 +2684,15 @@
 							]
 						},
 						"method": "GET",
-						"header": [],
+						"header": [
+							{
+								"key": "association-id",
+								"value": "8",
+								"type": "text"
+							}
+						],
 						"url": {
-							"raw": "{{url}}/api/v2/chalani-list-search?departure_date=2080-10-29&bus_id=38",
+							"raw": "{{url}}/api/v2/chalani-list-search?paginate=1&limit=5&page=1&departure_date=2080-11-30&bus_id=26",
 							"host": [
 								"{{url}}"
 							],
@@ -2513,26 +2704,23 @@
 							"query": [
 								{
 									"key": "paginate",
-									"value": "1",
-									"disabled": true
+									"value": "1"
 								},
 								{
 									"key": "limit",
-									"value": "5",
-									"disabled": true
+									"value": "5"
 								},
 								{
 									"key": "page",
-									"value": "1",
-									"disabled": true
+									"value": "1"
 								},
 								{
 									"key": "departure_date",
-									"value": "2080-10-29"
+									"value": "2080-11-30"
 								},
 								{
 									"key": "bus_id",
-									"value": "38"
+									"value": "26"
 								}
 							]
 						}
@@ -2558,7 +2746,14 @@
 							]
 						},
 						"method": "GET",
-						"header": [],
+						"header": [
+							{
+								"key": "association-id",
+								"value": "167",
+								"description": "nullable",
+								"type": "text"
+							}
+						],
 						"url": {
 							"raw": "{{url}}/api/v2/company?paginate=1&limit=5&page=1&search_keyword=&status=Enabled",
 							"host": [
@@ -2612,7 +2807,14 @@
 							]
 						},
 						"method": "GET",
-						"header": [],
+						"header": [
+							{
+								"key": "association-id",
+								"value": "",
+								"description": "nullable",
+								"type": "text"
+							}
+						],
 						"url": {
 							"raw": "{{url}}/api/v2/company/:slug",
 							"host": [
@@ -2823,6 +3025,96 @@
 			]
 		},
 		{
+			"name": "permission",
+			"item": [
+				{
+					"name": "list",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/v2/permission?paginate=1&limit=5&page=1&search_keyword=",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v2",
+								"permission"
+							],
+							"query": [
+								{
+									"key": "paginate",
+									"value": "1",
+									"description": "1||0"
+								},
+								{
+									"key": "limit",
+									"value": "5"
+								},
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "search_keyword",
+									"value": "",
+									"description": "||name"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "single",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/v2/permission/:id",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v2",
+								"permission",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "3"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
 			"name": "role",
 			"item": [
 				{
@@ -2989,7 +3281,14 @@
 							]
 						},
 						"method": "GET",
-						"header": [],
+						"header": [
+							{
+								"key": "association-id",
+								"value": "59",
+								"description": "nullable",
+								"type": "text"
+							}
+						],
 						"url": {
 							"raw": "{{url}}/api/v2/route?paginate=1&limit=5&page=1&status=Enabled&search_keyword=",
 							"host": [
@@ -3043,7 +3342,14 @@
 							]
 						},
 						"method": "GET",
-						"header": [],
+						"header": [
+							{
+								"key": "association-id",
+								"value": "",
+								"description": "nullable",
+								"type": "text"
+							}
+						],
 						"url": {
 							"raw": "{{url}}/api/v2/route/:id",
 							"host": [
@@ -3084,9 +3390,15 @@
 							]
 						},
 						"method": "GET",
-						"header": [],
+						"header": [
+							{
+								"key": "association-id",
+								"value": "",
+								"type": "text"
+							}
+						],
 						"url": {
-							"raw": "{{url}}/api/v2/sales-report-list-counter-online?from_date=2080-04-17&to_date=2080-08-30",
+							"raw": "{{url}}/api/v2/sales-report-list-counter-online?paginate=1&limit=5&page=1&from_date=2078-04-17&to_date=2080-11-30",
 							"host": [
 								"{{url}}"
 							],
@@ -3098,26 +3410,23 @@
 							"query": [
 								{
 									"key": "paginate",
-									"value": "1",
-									"disabled": true
+									"value": "1"
 								},
 								{
 									"key": "limit",
-									"value": "5",
-									"disabled": true
+									"value": "5"
 								},
 								{
 									"key": "page",
-									"value": "1",
-									"disabled": true
+									"value": "1"
 								},
 								{
 									"key": "from_date",
-									"value": "2080-04-17"
+									"value": "2078-04-17"
 								},
 								{
 									"key": "to_date",
-									"value": "2080-08-30"
+									"value": "2080-11-30"
 								}
 							]
 						}
@@ -3138,9 +3447,15 @@
 							]
 						},
 						"method": "GET",
-						"header": [],
+						"header": [
+							{
+								"key": "association-id",
+								"value": "",
+								"type": "text"
+							}
+						],
 						"url": {
-							"raw": "{{url}}/api/v2/sales-report-list-all-user?from_date=2080-04-17&to_date=2080-08-30",
+							"raw": "{{url}}/api/v2/sales-report-list-all-user?paginate=1&limit=5&page=1&from_date=2078-04-17&to_date=2080-11-30",
 							"host": [
 								"{{url}}"
 							],
@@ -3152,26 +3467,23 @@
 							"query": [
 								{
 									"key": "paginate",
-									"value": "1",
-									"disabled": true
+									"value": "1"
 								},
 								{
 									"key": "limit",
-									"value": "5",
-									"disabled": true
+									"value": "5"
 								},
 								{
 									"key": "page",
-									"value": "1",
-									"disabled": true
+									"value": "1"
 								},
 								{
 									"key": "from_date",
-									"value": "2080-04-17"
+									"value": "2078-04-17"
 								},
 								{
 									"key": "to_date",
-									"value": "2080-08-30"
+									"value": "2080-11-30"
 								}
 							]
 						}
@@ -3204,6 +3516,123 @@
 								"api",
 								"v2",
 								"site-setting"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "user",
+			"item": [
+				{
+					"name": "list",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "association-id",
+								"value": "",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/api/v2/user?paginate=1&limit=5&page=1&status=&search_keyword=",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v2",
+								"user"
+							],
+							"query": [
+								{
+									"key": "paginate",
+									"value": "1",
+									"description": "1||0"
+								},
+								{
+									"key": "limit",
+									"value": "5"
+								},
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "status",
+									"value": "",
+									"description": "||Active,Inactive"
+								},
+								{
+									"key": "search_keyword",
+									"value": ""
+								},
+								{
+									"key": "roles[]",
+									"value": "SuperAdmin",
+									"disabled": true
+								},
+								{
+									"key": "roles[]",
+									"value": "Counter",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "single",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "association-id",
+								"value": "",
+								"description": "nullable",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/api/v2/user/:id",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"v2",
+								"user",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "1"
+								}
 							]
 						}
 					},
